@@ -949,6 +949,7 @@ function recordDecision() {
 function setRole(role, { fromRoute = false } = {}) {
   if (authContext?.user?.role === "admin") {
     currentRole = "admin";
+    document.body.dataset.workspaceRole = currentRole;
     document.querySelector("#fde-view").hidden = false;
     document.querySelector("#enterprise").hidden = true;
     document.querySelector("#context-rail").hidden = true;
@@ -970,6 +971,7 @@ function setRole(role, { fromRoute = false } = {}) {
     role = enterpriseEntryRole();
   else if (authContext?.user?.role !== "legacy_test") role = "fde_owner";
   currentRole = role === "fde_owner" ? "fde_owner" : role;
+  document.body.dataset.workspaceRole = currentRole;
   const enterprise = currentRole !== "fde_owner";
   const processOwner = currentRole === "enterprise_process_owner";
   const company = selected?.name || "当前企业";

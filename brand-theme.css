@@ -1724,6 +1724,19 @@ body[data-active-view="enterprise"] .app-topbar .enterprise-entry-label {
   display: none;
 }
 
+/* Keep role-specific workspaces isolated even when an older stylesheet is cached. */
+body[data-workspace-role^="enterprise_"] .sidebar-nav [data-fde],
+body[data-workspace-role^="enterprise_"] #fde-view {
+  display: none !important;
+}
+body[data-workspace-role^="enterprise_"] #enterprise {
+  display: block !important;
+}
+body[data-workspace-role="fde_owner"] .sidebar-nav [data-enterprise],
+body[data-workspace-role="fde_owner"] #enterprise {
+  display: none !important;
+}
+
 body[data-active-view="enterprise"] .unified-enterprise-board {
   gap: 0;
   margin-bottom: 0;
