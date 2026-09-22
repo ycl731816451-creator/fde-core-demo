@@ -1,0 +1,112 @@
+- generic [active] [ref=f6e1]:
+  - link "跳到主要内容" [ref=f6e2] [cursor=pointer]:
+    - /url: "#workspace-main"
+  - banner [ref=f6e3]:
+    - generic [ref=f6e4]:
+      - generic [ref=f6e5]: 企业协作
+      - heading "苏州启衡智能制造（录屏演示） · 协作入口" [level=1] [ref=f6e6]
+      - paragraph [ref=f6e7]: 按步骤提交最小必要材料，帮助服务方在驻场前完成远程初筛。
+    - generic [ref=f6e8]:
+      - button "切换工作台角色" [ref=f6e9] [cursor=pointer]: 企业协作⌄
+      - button "帮助" [ref=f6e10] [cursor=pointer]
+      - button "退出" [ref=f6e11] [cursor=pointer]
+  - generic [ref=f6e12]:
+    - complementary "企业协作入口" [ref=f6e13]:
+      - generic "FDE CORE - 径流，远程优先的交付工作台" [ref=f6e14]:
+        - img "FDE CORE - 径流，远程优先的交付工作台" [ref=f6e15]
+      - navigation "工作台模块" [ref=f6e16]:
+        - button "企业操作" [expanded] [ref=f6e18] [cursor=pointer]
+        - navigation "企业协作步骤导航" [ref=f6e20]:
+          - generic [ref=f6e21]:
+            - generic [ref=f6e22]: PROJECT FLOW · 项目流程
+            - button "01 项目激活 已完成" [ref=f6e23] [cursor=pointer]:
+              - text: "01"
+              - generic [ref=f6e24]: 项目激活
+              - generic [ref=f6e25]: 已完成
+            - button "02 填写企业信息 已完成" [ref=f6e26] [cursor=pointer]:
+              - text: "02"
+              - generic [ref=f6e27]: 填写企业信息
+              - generic [ref=f6e28]: 已完成
+            - button "03 提供诊断资料 协作处理中" [ref=f6e29] [cursor=pointer]:
+              - text: "03"
+              - generic [ref=f6e30]: 提供诊断资料
+              - generic [ref=f6e31]: 协作处理中
+            - button "04 确认诊断事实 待完成" [ref=f6e32] [cursor=pointer]:
+              - text: "04"
+              - generic [ref=f6e33]: 确认诊断事实
+              - generic [ref=f6e34]: 待完成
+            - button "05 查看结论 待完成" [ref=f6e35] [cursor=pointer]:
+              - text: "05"
+              - generic [ref=f6e36]: 查看结论
+              - generic [ref=f6e37]: 待完成
+    - main [ref=f6e38]:
+      - region [ref=f6e39]:
+        - generic [ref=f6e40]:
+          - generic [ref=f6e41]:
+            - text: 企业协作 / 驻场前初筛
+            - heading "驻场前初筛协作" [level=2] [ref=f6e42]
+          - paragraph [ref=f6e43]: 同企业成员可填写信息、提交资料、管理授权、确认事实及查看结论；每次提交保留版本与时间。
+        - generic [ref=f6e44]:
+          - region "当前任务" [ref=f6e45]:
+            - generic [ref=f6e46]:
+              - text: legacy_test
+              - heading "等待系统授权人处理" [level=3] [ref=f6e47]
+              - paragraph [ref=f6e48]: 当前待办由服务方处理，你仍可回看、修改并提交资料新版本。诊断完成后，同企业成员均可确认诊断事实。
+              - region "当前任务操作说明" [ref=f6e49]:
+                - generic [ref=f6e50]:
+                  - generic [ref=f6e51]:
+                    - text: TASK CONTRACT
+                    - heading "本页操作说明" [level=4] [ref=f6e52]
+                    - paragraph [ref=f6e53]: 先满足前置条件，再完成本次动作；完成后由系统交给下一责任岗位。
+                  - generic [ref=f6e54]: 服务端阶段：等待系统授权 · 等待协作方处理
+                - generic [ref=f6e55]:
+                  - generic [ref=f6e56]:
+                    - generic [ref=f6e57]: 当前目标
+                    - strong [ref=f6e58]: 等待系统授权人完成当前处理
+                    - generic [ref=f6e59]: 当前没有需要企业处理的动作。
+                  - generic [ref=f6e60]:
+                    - generic [ref=f6e61]: 责任岗位
+                    - strong [ref=f6e62]: 系统授权人
+                    - generic [ref=f6e63]: 完成后会自动开放下一步
+                  - generic [ref=f6e64]:
+                    - generic [ref=f6e65]: 开始前确认
+                    - strong [ref=f6e66]: 授权范围完成预览，或已准备脱敏文件。
+                  - generic [ref=f6e67]:
+                    - generic [ref=f6e68]: 完成后
+                    - strong [ref=f6e69]: 当前流程已到末端
+                  - generic [ref=f6e70]:
+                    - generic [ref=f6e71]: 异常 / 补充
+                    - strong [ref=f6e72]: 若证据不足、映射冲突或读取失败，系统保留旧版本并进入补充/重跑路径。
+          - generic "资料提供方式" [ref=f6e73]:
+            - button "授权企业系统" [ref=f6e74] [cursor=pointer]
+            - button "批量上传资料" [pressed] [ref=f6e75] [cursor=pointer]
+            - button "两种方式结合" [ref=f6e76] [cursor=pointer]
+        - generic [ref=f6e77]:
+          - generic [ref=f6e78]:
+            - heading "最近提交" [level=4] [ref=f6e79]
+            - button "查看资料与全部版本" [ref=f6e80] [cursor=pointer]
+          - paragraph [ref=f6e81]: 暂无提交记录。完成当前任务后，记录会显示在这里。
+        - generic [ref=f6e82]:
+          - generic [ref=f6e83]:
+            - generic [ref=f6e84]:
+              - heading "机会资格" [level=3] [ref=f6e85]
+              - paragraph [ref=f6e86]: 五维判断 → 补齐依据 → 选择验证路线
+            - button "编辑资格" [ref=f6e87] [cursor=pointer]
+          - paragraph [ref=f6e88]: 尚未保存资格判断。填写已有信息即可保存；缺项需继续准备。
+          - status [ref=f6e89]
+          - group [ref=f6e90]:
+            - generic "资格历史（0）" [ref=f6e91] [cursor=pointer]
+        - generic [ref=f6e92]:
+          - group [ref=f6e93]:
+            - generic "审阅诊断方案与范围 · 待审阅" [ref=f6e94] [cursor=pointer]
+          - generic [ref=f6e95]:
+            - paragraph [ref=f6e96]: 只生成可解释的候选；不执行生产自动化。合成观察不代表真实企业成效、因果或 ROI。
+            - button "刷新本企业版本" [ref=f6e98] [cursor=pointer]
+            - navigation "方案与验证内容" [ref=f6e99]:
+              - button "方案候选" [pressed] [ref=f6e100] [cursor=pointer]
+              - button "远程与驻场" [ref=f6e101] [cursor=pointer]
+              - button "结果观察" [ref=f6e102] [cursor=pointer]
+              - button "报告与历史" [ref=f6e103] [cursor=pointer]
+            - paragraph [ref=f6e104]: 先在“诊断方案”建立范围，并由企业审阅确认。只允许当前已确认且有重复证据的问题生成候选。
+            - paragraph [ref=f6e105]: 目前没有可进入方案的重复问题。先完成证据诊断和企业事实确认；重复上传同一记录不会增加重复次数。
+          - status [ref=f6e106]

@@ -1,0 +1,129 @@
+- generic [ref=f3e1]:
+  - link "跳到主要内容" [ref=f3e2] [cursor=pointer]:
+    - /url: "#workspace-main"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - generic [ref=f3e5]: FDE DELIVERY CONSOLE / 01
+      - heading "驻场前的初筛" [level=1] [ref=f3e111]
+      - paragraph [ref=f3e7]: 先远程确认数据基础，再决定是否投入现场顾问。
+    - generic [ref=f3e8]:
+      - button "切换工作台角色" [expanded] [active] [ref=f3e9] [cursor=pointer]: FDE 工作台⌄
+      - generic [ref=f3e107]:
+        - button "FDE 工作台" [ref=f3e108] [cursor=pointer]
+        - button "企业轻量入口" [ref=f3e109] [cursor=pointer]
+        - button "企业流程负责人入口" [ref=f3e110] [cursor=pointer]
+      - button "帮助" [ref=f3e10] [cursor=pointer]
+      - button "退出" [ref=f3e11] [cursor=pointer]
+  - generic [ref=f3e12]:
+    - complementary "FDE Core 工作台导航" [ref=f3e112]:
+      - generic "FDE CORE - 径流，远程优先的交付工作台" [ref=f3e14]:
+        - img "FDE CORE - 径流，远程优先的交付工作台" [ref=f3e15]
+      - navigation "工作台模块" [ref=f3e16]:
+        - button "企业项目台 3" [ref=f3e113] [cursor=pointer]:
+          - generic [ref=f3e118]: 企业项目台
+          - emphasis [ref=f3e119]: "3"
+        - button "诊断工作台" [expanded] [ref=f3e120] [cursor=pointer]
+        - navigation "诊断工作台子导航" [ref=f3e126]:
+          - generic [ref=f3e127]:
+            - generic [ref=f3e128]: CONTEXT · 项目上下文
+            - button "01 项目总览" [ref=f3e129] [cursor=pointer]
+            - button "02 诊断方案" [ref=f3e130] [cursor=pointer]
+          - generic [ref=f3e131]:
+            - generic [ref=f3e132]: EVIDENCE · 证据与诊断
+            - button "03 数据接入" [ref=f3e133] [cursor=pointer]
+            - button "04 批次与映射" [ref=f3e134] [cursor=pointer]
+            - button "05 诊断结果" [ref=f3e135] [cursor=pointer]
+            - button "06 企业确认" [ref=f3e136] [cursor=pointer]
+          - generic [ref=f3e137]:
+            - generic [ref=f3e138]: DELIVERY · 交付与验证
+            - button "07 决策记录" [ref=f3e139] [cursor=pointer]
+            - button "08 方案与验证" [ref=f3e140] [cursor=pointer]
+        - button "介入与验证" [ref=f3e141] [cursor=pointer]
+        - button "报告与交付" [ref=f3e148] [cursor=pointer]
+        - button "管理中心" [ref=f3e154] [cursor=pointer]
+        - text: 01 02 03 04 05
+    - main [ref=f3e38]:
+      - region "驻场前的初筛" [ref=f3e162]:
+        - generic [ref=f3e163]:
+          - generic [ref=f3e164]:
+            - generic [ref=f3e165]: 待决策企业
+            - strong [ref=f3e166]: "3"
+            - generic [ref=f3e167]: 当前筛选队列
+          - generic [ref=f3e168]:
+            - generic [ref=f3e169]: 具备远程诊断基础
+            - strong [ref=f3e170]: "1"
+            - generic [ref=f3e171]: 仍需 FDE 记录路径
+          - generic [ref=f3e172]:
+            - generic [ref=f3e173]: 需要补充
+            - strong [ref=f3e174]: "1"
+            - generic [ref=f3e175]: 远程验证可继续
+          - generic [ref=f3e176]:
+            - generic [ref=f3e177]: 暂缺可验证数据
+            - strong [ref=f3e178]: "1"
+            - generic [ref=f3e179]: 先补齐最小样本
+        - generic [ref=f3e180]:
+          - tablist "筛选当前路径" [ref=f3e181]:
+            - tab "全部 3" [selected] [ref=f3e182] [cursor=pointer]
+            - tab "具备远程诊断基础 1" [ref=f3e183] [cursor=pointer]
+            - tab "远程补充 1" [ref=f3e184] [cursor=pointer]
+            - tab "暂缺可验证数据 1" [ref=f3e185] [cursor=pointer]
+            - tab "已归档 0" [ref=f3e186] [cursor=pointer]
+          - button "＋ 新建企业筛选" [ref=f3e187] [cursor=pointer]
+        - generic [ref=f3e188]:
+          - article [ref=f3e189]:
+            - button "01 品牌电商 · 售后返修与补发 杭州临溪茶具 等待企业材料 · 公开演示项目，仅展示原工作台交互 暂缺可验证数据 更新 今天 09:24 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。 60 处理优先级 不是诊断分数" [ref=f3e190] [cursor=pointer]:
+              - generic [ref=f3e191]: "01"
+              - generic [ref=f3e192]:
+                - generic [ref=f3e193]: 品牌电商 · 售后返修与补发
+                - strong [ref=f3e194]: 杭州临溪茶具
+                - generic [ref=f3e195]: 等待企业材料 · 公开演示项目，仅展示原工作台交互
+                - generic [ref=f3e196]:
+                  - generic [ref=f3e197]: 暂缺可验证数据
+                  - text: 更新 今天 09:24
+                - generic [ref=f3e198]: 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。
+              - generic [ref=f3e199]:
+                - strong [ref=f3e200]: "60"
+                - generic [ref=f3e201]: 处理优先级
+                - generic [ref=f3e202]: 不是诊断分数
+              - generic [aria-hidden] [ref=f3e203]: →
+            - generic "杭州临溪茶具项目操作" [ref=f3e204]:
+              - button "归档" [ref=f3e205] [cursor=pointer]
+              - button "删除" [ref=f3e206] [cursor=pointer]
+          - article [ref=f3e207]:
+            - button "02 工业设备制造 · 采购申请→OA审批→预付款→WMS入库 苏州启衡智能制造（录屏演示） 等待企业材料 · 公开演示项目，仅展示原工作台交互 远程补充材料 更新 刚刚 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。 60 处理优先级 不是诊断分数" [ref=f3e208] [cursor=pointer]:
+              - generic [ref=f3e209]: "02"
+              - generic [ref=f3e210]:
+                - generic [ref=f3e211]: 工业设备制造 · 采购申请→OA审批→预付款→WMS入库
+                - strong [ref=f3e212]: 苏州启衡智能制造（录屏演示）
+                - generic [ref=f3e213]: 等待企业材料 · 公开演示项目，仅展示原工作台交互
+                - generic [ref=f3e214]:
+                  - generic [ref=f3e215]: 远程补充材料
+                  - text: 更新 刚刚
+                - generic [ref=f3e216]: 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。
+              - generic [ref=f3e217]:
+                - strong [ref=f3e218]: "60"
+                - generic [ref=f3e219]: 处理优先级
+                - generic [ref=f3e220]: 不是诊断分数
+              - generic [aria-hidden] [ref=f3e221]: →
+            - generic "苏州启衡智能制造（录屏演示）项目操作" [ref=f3e222]:
+              - button "归档" [ref=f3e223] [cursor=pointer]
+              - button "删除" [ref=f3e224] [cursor=pointer]
+          - article [ref=f3e225]:
+            - button "03 家居制造 · 订单交付与异常处理 杭州棉云家居 等待企业材料 · 公开演示项目，仅展示原工作台交互 具备远程诊断基础 更新 今天 11:16 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。 20 处理优先级 不是诊断分数" [ref=f3e226] [cursor=pointer]:
+              - generic [ref=f3e227]: "03"
+              - generic [ref=f3e228]:
+                - generic [ref=f3e229]: 家居制造 · 订单交付与异常处理
+                - strong [ref=f3e230]: 杭州棉云家居
+                - generic [ref=f3e231]: 等待企业材料 · 公开演示项目，仅展示原工作台交互
+                - generic [ref=f3e232]:
+                  - generic [ref=f3e233]: 具备远程诊断基础
+                  - text: 更新 今天 11:16
+                - generic [ref=f3e234]: 下一步：打开诊断项目查看证据边界 · 责任：FDE顾问 · 最近动作：2026/9/22 14:28:38。本页面不连接真实企业系统。
+              - generic [ref=f3e235]:
+                - strong [ref=f3e236]: "20"
+                - generic [ref=f3e237]: 处理优先级
+                - generic [ref=f3e238]: 不是诊断分数
+              - generic [aria-hidden] [ref=f3e239]: →
+            - generic "杭州棉云家居项目操作" [ref=f3e240]:
+              - button "归档" [ref=f3e241] [cursor=pointer]
+              - button "删除" [ref=f3e242] [cursor=pointer]

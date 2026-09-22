@@ -6,7 +6,7 @@ const ONSITE_REASONS={remote_evidence_gap:'远程无法补齐证据',onsite_obse
 import {installQualificationWorkbench} from './qualification-workbench.js';
 export function installDeliveryWorkbench(host){
   installQualificationWorkbench(host);
-  const link=document.createElement('link');link.rel='stylesheet';link.href='/delivery-workbench.css';document.head.insertBefore(link,document.querySelector('link[href*="brand-theme.css"]'));
+  const link=document.createElement('link');link.rel='stylesheet';link.href='delivery-workbench.css';document.head.insertBefore(link,document.querySelector('link[href*="brand-theme.css"]'));
   const cache=new Map(),e=host.esc;
   const enterprise=()=>String(host.getUserRole()||'').startsWith('enterprise_');
   function notifySaved(s){if(host.getSelected()?.enterpriseId===s.id)window.dispatchEvent(new CustomEvent('fde:project-facts-changed',{detail:{view:host.getActiveView(),source:'delivery-workbench'}}));}

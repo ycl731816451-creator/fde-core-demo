@@ -996,8 +996,11 @@ function setRole(role, { fromRoute = false } = {}) {
   document
     .querySelectorAll("[data-enterprise]")
     .forEach((x) => (x.hidden = !enterprise));
-  document.querySelector("#role-switch").hidden =
-    authContext?.user?.role !== "legacy_test" || enterprise;
+  const canSwitchDemoRole = authContext?.user?.role === "legacy_test";
+  const roleSwitch = document.querySelector("#role-switch");
+  roleSwitch.hidden = !canSwitchDemoRole;
+  roleSwitch.textContent = enterprise ? "企业协作⌄" : "FDE 工作台⌄";
+  roleSwitch.setAttribute("aria-label", "切换工作台角色");
   document.querySelector("#enterprise-entry-label").hidden = !enterprise;
   document.querySelector("#enterprise-entry-label").textContent =
     `${company} · 协作入口`;

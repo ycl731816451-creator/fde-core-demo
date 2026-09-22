@@ -9,7 +9,7 @@ Object.assign(TEXT,{currentDurationUnit:'耗时单位',currentDurationWindow:'�
 
 export function installQualificationWorkbench(host) {
   if(document.querySelector('link[data-qualification-style]'))return;
-  const link=document.createElement('link');link.rel='stylesheet';link.href='/qualification-workbench.css';link.dataset.qualificationStyle='';document.head.insertBefore(link,document.querySelector('link[href*="brand-theme.css"]'));
+  const link=document.createElement('link');link.rel='stylesheet';link.href='qualification-workbench.css';link.dataset.qualificationStyle='';document.head.insertBefore(link,document.querySelector('link[href*="brand-theme.css"]'));
   const states=new Map(),esc=value=>host.esc(String(value??''));
   const word=value=>WORDS[value]||value;
   const editable=()=>host.getUserRole()==='fde';

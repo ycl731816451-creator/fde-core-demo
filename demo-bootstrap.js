@@ -150,11 +150,12 @@
     history: { requests: [], intakes: [], evidencePackages: [] },
     activity: [],
   };
-  const evidence = { missing: ["data", "timing"], pendingReview: 0, readyForSubmission: true, readyForDiagnosis: false, artifacts: [], records: [], summary: {} };
+  const evidence = { missing: ["data", "timing"], pendingReview: 0, readyForSubmission: true, readyForDiagnosis: false, artifacts: [], records: [], files: [], acquisitionPaths: [], dimensions: {}, summary: {} };
   const connectorWorkspace = { readiness: { sourceRecords: 0, acceptedDatasets: 0, totalDatasets: 0 }, sources: [], boundary: "仅展示合成数据，不连接真实企业系统。" };
   const mapping = { coverage: 0, counts: { pending: 0, gap: 0, confirmed: 0 }, candidates: [], gaps: [] };
   const diagnosis = { summary: { triggered: 0, issues: 0, pendingConfirmation: 0 }, issues: [], latestDecision: null, diagnosisVersion: { current: null } };
-  const delivery = { history: [] };
+  const delivery = { history: [], issues: [], planConfirmed: false };
+  const readonlyConnectors = { sources: [], catalog: [], dataset: { fields: [], required: [], labels: {} } };
   const projectState = { status: "awaiting_authorization", history: [] };
   const session = { user: { role: "legacy_test", displayName: "公开演示顾问", username: "public-demo" }, writeToken: "demo-write-token", expiresAt: new Date(Date.now() + 86400000).toISOString(), absoluteExpiresAt: new Date(Date.now() + 86400000).toISOString() };
 
@@ -188,6 +189,9 @@
     if (path.endsWith("/connectors")) return json(connectorWorkspace);
     if (path.endsWith("/procurement-mappings")) return json(mapping);
     if (path.endsWith("/procurement-diagnosis")) return json(diagnosis);
+    if (path.endsWith("/readonly-connectors")) return json(readonlyConnectors);
+    if (path.endsWith("/delivery-plan/draft")) return json({ available: false, message: "演示项目尚未提交企业准入自述。" });
+    if (path.endsWith("/delivery-plan")) return json({ plan: null, history: [], scopeCatalog: [], alignedWithLatestIntake: true, confirmed: false, latestIntakeVersion: null });
     if (path.endsWith("/delivery")) return json(delivery);
     if (path.endsWith("/connector-project-state")) return json(projectState);
     if (path.endsWith("/procurement-diagnosis/snapshots")) return json({ snapshots: [] });
