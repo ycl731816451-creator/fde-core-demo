@@ -1,0 +1,2580 @@
+/* Absolute Realm / Runoff visual layer. Status semantics and business controls are unchanged. */
+:root {
+  --ink: #192236;
+  --muted: #627088;
+  --soft: #f3f6fb;
+  --line: #dbe3ee;
+  --panel: #fff;
+  --nav: #101522;
+  --nav-muted: #aebbd4;
+  --blue: #295fe8;
+  --blue-soft: #eef3ff;
+  --green: #295fe8;
+  --green-soft: #eef3ff;
+  --mint: #82aaff;
+  --shadow: 0 18px 44px rgba(23, 38, 75, .07);
+  --workbench-bg: #f3f6fb;
+  --workbench-ink: #192236;
+  --workbench-line: #dbe3ee;
+  --workbench-deep: #101522;
+  --workbench-mint: #79a4ff;
+  --workbench-mint-soft: #edf3ff;
+  --hierarchy-surface: #fff;
+  --hierarchy-canvas: #f3f6fb;
+  --hierarchy-subtle: #f7f9fd;
+  --hierarchy-line: #dbe3ee;
+  --hierarchy-line-strong: #b9cae8;
+  --hierarchy-ink: #192236;
+  --hierarchy-muted: #627088;
+  --hierarchy-accent: #295fe8;
+  --hierarchy-accent-soft: #eef3ff;
+  --hierarchy-shadow: 0 14px 38px rgba(23, 38, 75, .06);
+}
+
+html, body { background: #f3f6fb; }
+body { color: var(--ink); }
+.workspace-main { background: #f3f6fb; container: workbench-main / inline-size; }
+.app-sidebar { background: #101522; border-right: 1px solid #26324b; }
+.brand-owner {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 5px 17px; border-bottom: 1px solid #2c3750;
+  color: #e6ecf9; font-size: 12px; font-weight: 650; letter-spacing: .08em;
+}
+.brand-owner small { display: block; margin-top: 3px; color: #899cc1; font: 500 9px/1.4 "SF Mono", Menlo, monospace; letter-spacing: .1em; }
+.owner-orbit { width: 22px; height: 14px; flex: 0 0 auto; border: 2px solid #6493ff; border-radius: 50%; transform: rotate(-28deg); }
+.app-sidebar .brand-lockup { gap: 12px; }
+.app-sidebar .brand-mark { width: 42px; height: 42px; border: 1px solid #6c91e4; border-radius: 10px; background: #192743; color: #9bbaff; }
+.app-sidebar .brand-lockup .brand-copy { gap: 4px; }
+.app-sidebar .brand-lockup .brand-copy .brand-name,
+.app-sidebar .brand-lockup .brand-copy .brand-name .brand-name-face {
+  color: #f4f7ff; font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 22px; font-weight: 700; letter-spacing: .06em; line-height: 1;
+  -webkit-font-smoothing: antialiased; -webkit-text-stroke: 0;
+  -webkit-mask-image: none; mask-image: none;
+}
+.app-sidebar .brand-lockup .brand-copy .brand-name-face::before { content: none; }
+.app-sidebar .brand-lockup .brand-copy strong { color: #92a8d4; font-size: 9px; font-weight: 550; letter-spacing: .16em; text-shadow: none; }
+.app-sidebar .product-sidebar-lockup {
+  display: block;
+  width: 100%;
+  padding: 4px 6px 2px;
+}
+.app-sidebar .product-sidebar-lockup img {
+  display: block;
+  width: min(100%, 176px);
+  height: auto;
+}
+.workspace-badge { background: #192339; border-color: #33415f; color: #d7e2f8; }
+.sidebar-label, .sidebar-nav-group-label { color: #8c9dbb; }
+.sidebar-nav button { color: #b6c2da; }
+.sidebar-nav button:hover, .sidebar-nav button.active,
+.sidebar-nav .sidebar-nav-secondary:hover, .sidebar-nav .sidebar-nav-secondary.active {
+  color: #fff; background: #1b2a49; box-shadow: inset 3px 0 #6e9bff;
+}
+.sidebar-nav button:focus-visible { outline: 2px solid #8cacff; outline-offset: 2px; }
+.nav-index { color: #8ba1ca; }
+.sidebar-nav em { background: #2b3e65; color: #e2eafb; }
+.sidebar-nav-divider, .sidebar-footer { border-color: #2d3952; }
+.sidebar-footer { color: #bdc8da; }
+.sidebar-footer small { color: #99aaca; }
+.workspace-topbar { border-color: var(--line); }
+.workspace-topbar h1, .section-heading h2 { color: #192236; }
+.eyebrow { color: #3566dd; }
+.context-rail { background: #fff; border-color: var(--line); }
+.rail-pin, .connection-pill { border-color: var(--line); }
+.connector-shell, .panel, .report-paper, .enterprise-card, .project-header { border-color: var(--line); }
+.connector-shell > .connector-primary-tabs { background: #f6f8fd; }
+.connector-shell > .connector-primary-tabs .project-subnav-item.active,
+.project-details-disclosure .project-subnav-item.active { color: #295fe8; border-color: #b5c8f4; box-shadow: 0 3px 10px rgba(41, 95, 232, .07); }
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item { color: #51627f; border-bottom-color: #e0e6f0; }
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item:hover,
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item:focus-visible { background: #edf3ff; border-bottom-color: #b5c8f4; outline-color: rgba(41, 95, 232, .28); }
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item.active { background: #295fe8; color: #fff; box-shadow: 0 5px 12px rgba(41, 95, 232, .17); }
+.stage-workbench, .report-index, .report-top { background: #141d30; }
+.report-index-item.active { background: #263960; box-shadow: inset 3px 0 #7ea4ff; }
+.primary-button { border-color: #2859d9; background: #295fe8; }
+.primary-button:hover { background: #214fc9; }
+.enterprise-milestones .current { color: #295fe8; }
+.enterprise-milestones .current > span { background: #295fe8; border-color: #295fe8; }
+.quiet-button:focus-visible, .primary-button:focus-visible,
+.connector-shell button:focus-visible, .connector-shell summary:focus-visible,
+.connector-shell input:focus-visible, .connector-shell select:focus-visible,
+.connector-shell textarea:focus-visible { outline-color: #88aaff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-nav button, .primary-button { transition: none; }
+}
+
+/* Product-first palette. Legacy --green aliases above retain behavior without the old paint. */
+body { -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+:is(.workspace-topbar h1, .section-heading h2, .project-header h3, .report-top h3) { text-wrap: balance; }
+.good, .notice.success, .rail-pin, .issue-board-count,
+.issue-evidence strong, .issue-board-more > summary, .technical-evidence > summary,
+.password-control button, .support-form-actions span { color: #2457c2; }
+.notice.success { border-color: #b9ccf5; background: #eef3ff; }
+.status-badge.good, .decision-banner.good, .prep-banner.good,
+.report-summary.good, .invitation-result, .enterprise-shared-decision { background: #eef3ff; }
+.screening-card:hover, .screening-card.selected {
+  border-color: #aec5f5;
+  box-shadow: 0 10px 24px rgba(23, 54, 125, .08);
+  transform: none;
+}
+.card-arrow { color: #6d8dcc; }
+.context-symbol { background: #e5edff; color: #2457c2; }
+.rail-pin { border-color: #b7caf1; }
+.rail-action, .enterprise-actions button:first-child {
+  border-color: #b7caf1;
+  background: #edf3ff;
+  color: #2457c2;
+}
+.rail-action:hover, .enterprise-actions button:first-child:hover {
+  border-color: #7fa3f0;
+  background: #dfeaff;
+}
+.step.current, .project-state-rail li.current, .report-section.selected,
+.report-decision-metric.decision-metric-emphasis, .diagnostic-issue-board,
+.diagnostic-issue-card:not(.severity-high, .severity-medium) {
+  border-color: #bad0f7;
+  background: #f3f7ff;
+}
+.report-decision-metric.decision-metric-emphasis strong,
+.issue-board-count { color: #2457c2; }
+.issue-board-count { background: #e8f0ff; }
+.diagnostic-issue-board { background: #f9fbff; }
+.diagnostic-issue-card:not(.severity-high, .severity-medium) { background: #fff; }
+.source-icon { color: #4168aa; background: #eef3ff; }
+
+/* Current workflow and authorization states. Amber/red remain warning/error colors. */
+.unified-phase, .unified-role, .main-flow-count, .flow-service-status,
+.flow-activity header > span, .main-flow-group > header > span,
+.task-ready, .execution-task em {
+  border-color: #bfd2f6;
+  background: #eaf1ff;
+  color: #2457c2;
+}
+.current-task-main > span, .main-flow-step-top em, .task-assignment p,
+.settings-contract-grid article > span, .settings-audit-list em,
+.authorization-source-choice em, .authorization-field-grid small,
+.authorization-submit-hint[data-state="ready"] { color: #2457c2; }
+.main-flow-chip.current, .main-flow-chip.selected, .main-flow-step.current,
+.unified-timeline li.current, .acquisition-grid button.is-active,
+.coverage-grid article.verified, .enterprise-actions button.is-active,
+.enterprise-actions button.is-complete, .direct-revision-note {
+  border-color: #9bbaf5;
+  background: #edf3ff;
+  color: #234fba;
+  box-shadow: none;
+}
+.main-flow-chip.done > span, .main-flow-chip.current > span,
+.main-flow-chip.selected > span, .main-flow-step.done .main-flow-step-top > span,
+.main-flow-step.current .main-flow-step-top > span,
+.unified-timeline li.done > span, .project-state-rail li.current > span,
+.authorization-steps li.active span {
+  background: #295fe8;
+  color: #fff;
+  border-color: #295fe8;
+}
+.enterprise-milestones .done > span, .macro-flow-tab.done > span,
+.project-state-rail li.completed > span, .authorization-steps li.complete span {
+  background: #e5edff;
+  color: #2457c2;
+}
+.enterprise-task-map .macro-flow-tabs, .report-package-actions .report-types,
+.execution-tabs, .connector-settings-tabs { background: #edf2fb; border-color: #d7e2f4; }
+.execution-tabs button, .connector-settings-tabs button { color: #586a84; }
+.execution-tabs button:hover, .execution-tabs button.active,
+.connector-settings-tabs button:hover, .connector-settings-tabs button.active {
+  color: #2356c8;
+  background: #fff;
+}
+.connector-workspace-nav-heading, .connector-workspace-nav-heading-copy strong { color: #3d557c; }
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item:hover,
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item:focus-visible {
+  color: #2457c2;
+  border-color: #bfd2f6;
+  background: #edf3ff;
+}
+.connector-workspace-layout > .connector-primary-tabs .project-subnav-item.active {
+  color: #fff;
+  border-color: #295fe8;
+  background: #295fe8;
+  box-shadow: 0 5px 12px rgba(41, 95, 232, .16);
+}
+.connector-workspace-nav-index, .connector-dimensions summary,
+.connector-boundary-card summary, .diagnosis-method > summary,
+.readiness-summary > summary, .source-evidence > summary,
+.workflow-management > summary, .workflow-progress > summary,
+.main-flow-step-details summary, .report-section-heading > span,
+.connector-source-actions button, .connector-gate button,
+.connector-success-strip button, .connector-secondary-button,
+.mapping-actions button.primary { color: #2457c2; }
+.connector-source-actions button:hover, .connector-source-actions button:focus-visible,
+.connector-secondary-button:hover, .acquisition-grid button:hover,
+.acquisition-grid button:focus-visible { border-color: #9bbaf5; background: #edf3ff; }
+.connector-source-actions .primary, .connector-source-actions .primary-button {
+  border-color: #295fe8;
+  background: #295fe8;
+  color: #fff;
+}
+.authorization-steps li.active, .authorization-steps li.complete,
+.connector-success-strip, .connector-source-card:has(.connector-source-head em.good) {
+  border-color: #b7cdf5;
+  background: #f3f7ff;
+  color: #2457c2;
+}
+.authorization-grid input[type=checkbox], .material-check-row input,
+.field-grid input, .runoff-delivery input[type=checkbox] { accent-color: #295fe8; }
+.connector-progress-strip, .connector-loading-surface, .readiness-notice,
+.plan-draft-assist:not(.is-waiting) { border-color: #c1d2f4; background: #f1f5ff; }
+.connector-loading-dot { background: #295fe8; box-shadow: 0 0 0 6px rgba(41, 95, 232, .12); }
+
+/* Reports, governance and dynamically mounted workbenches use the same accent. */
+#reports-content .report-index-item.active,
+#reports-content .report-index-item:hover { background: #e6eeff; color: #2457c2; }
+#reports-content .report-top, #reports-content .report-top h3,
+#reports-content .report-index-title strong { color: #192236; }
+#reports-content .report-evidence-actions button, .source-evidence button,
+.qualification-workbench button, .runoff-delivery button, .readiness-panel button {
+  border-color: #c0d0ef;
+  background: #fff;
+  color: #2457c2;
+}
+#reports-content .report-evidence-actions button:hover, .source-evidence button:hover,
+.qualification-workbench button:hover, .runoff-delivery button:hover,
+.readiness-panel button:hover { border-color: #84a6ef; background: #eef3ff; }
+.qualification-workbench button[type=submit], .qualification-workbench [data-q-edit],
+.runoff-delivery button[type=submit], .runoff-delivery .plan-draft-actions button:first-child,
+.runoff-delivery .delivery-tabs button[aria-pressed=true] {
+  border-color: #295fe8;
+  background: #295fe8;
+  color: #fff;
+}
+.runoff-delivery button[type=submit]:hover,
+.qualification-workbench button[type=submit]:hover { background: #214fc9; }
+.qualification-workbench, .runoff-delivery,
+.qualification-workbench input, .qualification-workbench select,
+.qualification-workbench textarea, .runoff-delivery input,
+.runoff-delivery select, .runoff-delivery textarea { color: #192236; }
+.qualification-workbench p, .runoff-delivery p { color: #5d6d86; }
+.qualification-workbench [data-q-feedback], .runoff-delivery [role=status],
+.plan-draft-assist span { color: #2457c2; }
+.readiness-panel {
+  --readiness-ink: #192236;
+  --readiness-muted: #5d6d86;
+  --readiness-line: #cbd8ee;
+  --readiness-accent: #2457c2;
+  border-width: 1px;
+}
+.readiness-notice.error, .runoff-delivery .delivery-error { color: #a92731; }
+
+/* Buttons acknowledge input without shifting surrounding layout. */
+:where(.primary-button, .quiet-button, .secondary-button, .rail-action,
+  .topbar-actions > button, .connector-secondary-button,
+  .qualification-workbench button, .runoff-delivery button,
+  .readiness-panel button) {
+  transition: background-color .16s ease, border-color .16s ease,
+    color .16s ease, box-shadow .16s ease, scale .12s ease;
+}
+:where(.primary-button, .quiet-button, .secondary-button, .rail-action,
+  .topbar-actions > button, .connector-secondary-button,
+  .qualification-workbench button, .runoff-delivery button,
+  .readiness-panel button):not(:disabled):active { scale: .96; }
+:where(.quiet-button, .secondary-button, .topbar-actions > button):hover {
+  border-color: #a9c2f2;
+  background: #f2f6ff;
+  color: #2457c2;
+}
+:where(button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(41, 95, 232, .52);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.primary-button, .quiet-button, .secondary-button, .rail-action,
+    .topbar-actions > button, .connector-secondary-button,
+    .qualification-workbench button, .runoff-delivery button,
+    .readiness-panel button) { transition: none; }
+}
+
+/* Native progress keeps its value under the strict style-src policy. */
+progress.project-context-progress {
+  display: block;
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  border: 0;
+  background: #e3eaf7;
+  color: #295fe8;
+}
+progress.project-context-progress::-webkit-progress-bar { background: #e3eaf7; border-radius: 999px; }
+progress.project-context-progress::-webkit-progress-value { background: #295fe8; border-radius: 999px; }
+progress.project-context-progress::-moz-progress-bar { background: #295fe8; border-radius: 999px; }
+.status-dot { background: #4f82ef; }
+.context-decision.warn, .connector-next-card { background: #f3f7ff; border-color: #c4d4f4; }
+.connector-next-card h3, .connector-next-card strong { color: #1c2a46; }
+.plan-draft-assist:not(.is-waiting) {
+  grid-template-columns: minmax(0,1fr);
+  gap: 14px;
+  border-left-color: #295fe8;
+  background: #f3f7ff;
+}
+.plan-draft-assist:not(.is-waiting) .plan-draft-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Report package and navigation use one blue language, not legacy mint. */
+.sidebar-nav .sidebar-nav-secondary { color: #b6c2da; }
+#reports-content .report-index-title .eyebrow,
+#reports-content .report-top .eyebrow { color: #3566dd; }
+#reports-content .report-index-item { color: #5d6d86; }
+#reports-content .report-index-item span { color: #6c80a4; border-color: #cbd7ed; }
+#reports-content .report-index-item.active span {
+  color: #2457c2;
+  background: #e7efff;
+  border-color: #b9cef5;
+}
+#reports-content .report-top p,
+#reports-content .report-version-stamp,
+#reports-content .report-section-row > span { color: #5d6d86; }
+#reports-content .report-section-heading > span { background: #e8f0ff; }
+#reports-content .report-index { background: transparent; }
+.report-package-copy span { color: #5d6d86; }
+.enterprise-milestones li { color: #64738c; }
+.unified-enterprise-board .enterprise-current-task p { color: #5d6d86; }
+.settings-tabs button.active { color: #2457c2; background: #edf3ff; border-color: #bfd2f6; }
+.settings-tabs button:hover:not(.active) { color: #2457c2; background: #f3f7ff; }
+.status-dot { box-shadow: 0 0 0 4px rgba(79, 130, 239, .13); }
+.runoff-delivery .delivery-tag { color: #2457c2; background: #e8f0ff; }
+.connector-source-symbol { color: #2457c2; background: #e8f0ff; }
+.connector-progress-strip { color: #5d6d86; }
+.connector-progress-strip strong { color: #192236; }
+.connector-source-head .neutral { color: #5d6d86; background: #eef2f8; }
+.connector-project-identity p, .connector-dataset-list span { color: #5d6d86; }
+.macro-flow-tabs { border-color: #d7e2f4; background: #f2f6ff; }
+.macro-flow-tab { color: #5d6d86; }
+.macro-flow-tab strong { color: #34445d; }
+.macro-flow-tab > span, .main-flow-chip > span { color: #5d6d86; background: #e7edf8; }
+.macro-flow-tab.done > span { color: #2457c2; background: #e5edff; }
+.macro-flow-tab.active { border-color: #a9c3f4; background: #fff; box-shadow: 0 6px 18px rgba(41,95,232,.08); }
+.main-flow-chip:hover:not(:disabled), .enterprise-task-map .main-flow-chip:hover:not(:disabled),
+.enterprise-task-map .main-flow-chip.selected { border-color: #a9c3f4; background: #f3f7ff; }
+.main-flow-chip:focus-visible { outline-color: rgba(41,95,232,.52); }
+
+button {
+  transition: background-color .16s ease, border-color .16s ease,
+    color .16s ease, box-shadow .16s ease, scale .12s ease;
+}
+button:not(:disabled):active { scale: .97; }
+button:disabled { cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+}
+
+/* At tablet widths, preserve command labels by stacking the top bar before they collide. */
+@media (min-width: 761px) and (max-width: 800px) {
+  .workspace-topbar {
+    height: auto;
+    min-height: 82px;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 0;
+    gap: 10px;
+  }
+  .workspace-topbar h1 { max-width: 100%; overflow-wrap: anywhere; }
+  .topbar-actions { width: 100%; min-width: 0; flex-wrap: wrap; }
+  .connection-pill, .enterprise-entry-label { min-width: 0; max-width: 100%; }
+}
+
+/* Keep the project canvas legible on compact desktop widths.  The local
+   workspace navigation becomes a concise horizontal route before content
+   cards are forced into unreadably narrow columns. */
+@media (min-width: 901px) and (max-width: 1180px) {
+  /* Enterprise collaboration has no FDE navigation or project summary rail. */
+  body[data-active-view="project"] .app-shell.connector-enterprise-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .connector-shell > .connector-workspace-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .connector-workspace-layout > .connector-primary-tabs {
+    position: static;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .connector-workspace-nav-intro,
+  .connector-workspace-nav-heading {
+    grid-column: 1 / -1;
+  }
+
+  .connector-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Shell hierarchy: icons identify destinations; group labels only classify them. */
+.sidebar-nav button { position: relative; gap: 11px; }
+.sidebar-nav .nav-index {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.sidebar-nav .nav-icon {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  color: #91a6cf;
+}
+.sidebar-nav .nav-icon svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sidebar-nav button:hover .nav-icon,
+.sidebar-nav button.active .nav-icon { color: #a9c4ff; }
+.sidebar-nav .sidebar-nav-secondary {
+  padding-left: 9px;
+  font-size: 15px;
+}
+.sidebar-nav .sidebar-nav-secondary .nav-icon { color: #7f91b3; }
+.sidebar-nav-group-label {
+  margin: 12px 8px 5px;
+  padding: 0;
+  color: #6f82a8;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .12em;
+}
+
+/* The current-project rail is a persistent, keyboard-adjustable drawer. */
+@media (min-width: 981px) {
+  body[data-active-view="queue"]:not(.context-rail-collapsed) .app-shell,
+  body[data-active-view="project"]:not(.context-rail-collapsed) .app-shell {
+    grid-template-columns: 242px minmax(0, 1fr) 320px;
+  }
+  body[data-active-view="queue"][data-context-rail-width="264"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="264"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 264px; }
+  body[data-active-view="queue"][data-context-rail-width="272"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="272"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 272px; }
+  body[data-active-view="queue"][data-context-rail-width="280"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="280"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 280px; }
+  body[data-active-view="queue"][data-context-rail-width="288"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="288"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 288px; }
+  body[data-active-view="queue"][data-context-rail-width="296"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="296"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 296px; }
+  body[data-active-view="queue"][data-context-rail-width="304"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="304"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 304px; }
+  body[data-active-view="queue"][data-context-rail-width="312"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="312"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 312px; }
+  body[data-active-view="queue"][data-context-rail-width="320"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="320"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 320px; }
+  body[data-active-view="queue"][data-context-rail-width="328"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="328"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 328px; }
+  body[data-active-view="queue"][data-context-rail-width="336"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="336"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 336px; }
+  body[data-active-view="queue"][data-context-rail-width="344"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="344"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 344px; }
+  body[data-active-view="queue"][data-context-rail-width="352"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="352"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 352px; }
+  body[data-active-view="queue"][data-context-rail-width="360"] .app-shell,
+  body[data-active-view="project"][data-context-rail-width="360"] .app-shell { grid-template-columns: 242px minmax(0, 1fr) 360px; }
+  /* Enterprise collaboration has no FDE context rail; keep its workspace full width. */
+  body[data-active-view="project"] .app-shell.connector-enterprise-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .context-rail { position: relative; padding-inline: 23px; }
+  .context-rail-resizer {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: -5px;
+    width: 10px;
+    cursor: col-resize;
+    touch-action: none;
+  }
+  .context-rail-resizer::after {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    width: 2px;
+    height: 38px;
+    border-radius: 999px;
+    background: #c6d4ee;
+    content: "";
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity .16s ease, background-color .16s ease;
+  }
+  .context-rail-resizer:hover::after,
+  .context-rail-resizer:focus-visible::after,
+  body.context-rail-resizing .context-rail-resizer::after { opacity: 1; background: #3566dd; }
+  .context-rail-resizer:focus-visible { outline: 2px solid #82aaff; outline-offset: -1px; }
+  body.context-rail-resizing { cursor: col-resize; user-select: none; }
+  body.context-rail-collapsed .context-rail-resizer { display: none; }
+}
+@media (max-width: 760px) {
+  .sidebar-nav .nav-icon { width: 20px; height: 20px; flex-basis: 20px; }
+  .sidebar-nav .sidebar-nav-secondary { padding-left: 11px; }
+}
+
+/* Rail drawer: compact icon state never leaves an empty reserved column. */
+@media (min-width: 981px) {
+  body[data-active-view="queue"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell),
+  body[data-active-view="project"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell) {
+    grid-template-columns: 242px minmax(0, 1fr) 60px;
+  }
+  body.context-rail-collapsed .context-rail {
+    padding: 12px 9px;
+  }
+  body.context-rail-collapsed .context-rail > .rail-heading {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .context-rail-toggle,
+  body.context-rail-collapsed .context-rail-toggle {
+    display: inline-grid;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
+    place-items: center;
+    border-color: #b9cae8;
+    border-radius: 9px;
+    background: #fff;
+    color: #355aab;
+    font-size: 0;
+    line-height: 1;
+    writing-mode: horizontal-tb;
+    transition: border-color .16s ease, background-color .16s ease,
+      box-shadow .16s ease, color .16s ease, scale .12s ease;
+  }
+  .context-rail-toggle::before {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    content: "";
+    transform: rotate(45deg) translate(-1px, 1px);
+  }
+  body.context-rail-collapsed .context-rail-toggle::before {
+    transform: rotate(-135deg) translate(-1px, 1px);
+  }
+  .context-rail-toggle:hover { border-color: #7ea0e7; background: #eef3ff; color: #2457c2; }
+  .context-rail-resizer {
+    left: -7px;
+    width: 14px;
+  }
+  .context-rail-resizer::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 6px;
+    width: 1px;
+    background: #d6e0f1;
+    content: "";
+  }
+  .context-rail-resizer::after {
+    left: 5px;
+    height: 52px;
+    opacity: .7;
+  }
+  .context-rail-resizer:hover::after,
+  .context-rail-resizer:focus-visible::after,
+  body.context-rail-resizing .context-rail-resizer::after { opacity: 1; }
+}
+
+/* A desktop-sized narrow window keeps the rail available instead of leaving a blank column. */
+@media (min-width: 981px) and (max-width: 1180px) {
+  body[data-active-view="queue"] .context-rail,
+  body[data-active-view="project"] .context-rail { display: block; }
+  body[data-active-view="queue"]:not(.context-rail-collapsed) .app-shell,
+  body[data-active-view="project"]:not(.context-rail-collapsed) .app-shell {
+    grid-template-columns: 220px minmax(0, 1fr) 264px;
+  }
+  body[data-active-view="queue"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell),
+  body[data-active-view="project"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell) {
+    grid-template-columns: 220px minmax(0, 1fr) 60px;
+  }
+}
+
+/* Shared action language: intent is carried by hierarchy, never by decorative color changes. */
+:root {
+  --button-radius: 10px;
+  --button-outline: #c5d3ea;
+  --button-outline-hover: #91afe8;
+  --button-quiet: #f8faff;
+  --button-quiet-hover: #edf3ff;
+  --button-primary: #285fe0;
+  --button-primary-hover: #1f4fc7;
+  --button-danger: #b42336;
+  --button-danger-soft: #fff5f6;
+}
+
+button {
+  min-height: 40px;
+  border-radius: var(--button-radius);
+  font-weight: 650;
+  letter-spacing: .005em;
+  text-wrap: nowrap;
+  transition: background-color .16s ease, border-color .16s ease,
+    box-shadow .16s ease, color .16s ease, scale .12s ease, translate .12s ease;
+}
+button:disabled,
+button[aria-disabled="true"] {
+  box-shadow: none !important;
+  cursor: not-allowed;
+  opacity: .5;
+}
+button:focus-visible {
+  outline: 3px solid rgba(41, 95, 232, .44);
+  outline-offset: 2px;
+}
+
+/* Secondary actions remain quiet until intent is clear. */
+body :is(.quiet-button, .secondary-button, .screening-card-action, .rail-action,
+  .topbar-actions > button, .connector-secondary-button,
+  .connector-gate button, .connector-success-strip button,
+  .connector-source-actions button, .mapping-actions button,
+  .qualification-workbench button, .runoff-delivery button:not([data-delivery-tab]),
+  .readiness-panel button, #reports-content .report-evidence-actions button,
+  .source-evidence button) {
+  border-radius: var(--button-radius);
+  border-color: var(--button-outline);
+  background: var(--button-quiet);
+  color: #234fba;
+  box-shadow: 0 1px 1px rgba(26, 51, 103, .03);
+}
+body :is(.quiet-button, .secondary-button, .screening-card-action, .rail-action,
+  .topbar-actions > button, .connector-secondary-button,
+  .connector-gate button, .connector-success-strip button,
+  .connector-source-actions button, .mapping-actions button,
+  .qualification-workbench button, .runoff-delivery button:not([data-delivery-tab]),
+  .readiness-panel button, #reports-content .report-evidence-actions button,
+  .source-evidence button):not(:disabled):hover {
+  border-color: var(--button-outline-hover);
+  background: var(--button-quiet-hover);
+  color: #1d48b0;
+  box-shadow: 0 5px 14px rgba(38, 80, 171, .09);
+}
+
+/* Confirming or advancing the workflow is the only filled treatment. */
+body :is(.primary-button, .connector-source-actions .primary,
+  .mapping-actions button.primary, .qualification-workbench button[type="submit"],
+  .qualification-workbench [data-q-edit], .runoff-delivery button[type="submit"],
+  .runoff-delivery .plan-draft-actions button:first-child,
+  .runoff-delivery .delivery-tabs button[aria-pressed="true"],
+  .enterprise-actions button:first-child) {
+  border-radius: var(--button-radius);
+  border-color: var(--button-primary);
+  background: var(--button-primary);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(22, 53, 125, .22), 0 7px 16px rgba(41, 95, 232, .16);
+}
+body :is(.primary-button, .connector-source-actions .primary,
+  .mapping-actions button.primary, .qualification-workbench button[type="submit"],
+  .qualification-workbench [data-q-edit], .runoff-delivery button[type="submit"],
+  .runoff-delivery .plan-draft-actions button:first-child,
+  .runoff-delivery .delivery-tabs button[aria-pressed="true"],
+  .enterprise-actions button:first-child):not(:disabled):hover {
+  border-color: var(--button-primary-hover);
+  background: var(--button-primary-hover);
+  box-shadow: 0 2px 3px rgba(22, 53, 125, .24), 0 10px 20px rgba(41, 95, 232, .2);
+  translate: 0 -1px;
+}
+
+/* Navigation is a selection control, not a stack of miniature CTAs. */
+body :is(.filter-tabs button, .settings-tabs button, .execution-tabs button,
+  .connector-settings-tabs button, .project-subnav-item, .main-flow-chip,
+  .macro-flow-tab, .tier-action, .enterprise-milestones button,
+  .role-menu button) {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+body :is(.filter-tabs button, .settings-tabs button, .execution-tabs button,
+  .connector-settings-tabs button, .project-subnav-item, .main-flow-chip,
+  .macro-flow-tab, .tier-action, .enterprise-milestones button,
+  .role-menu button):not(:disabled):hover {
+  box-shadow: none;
+  translate: 0;
+}
+
+/* Destructive actions never compete with a forward action. */
+body :is(button.danger, .danger.screening-card-action, [data-lifecycle-action="permanent-delete"]) {
+  border-color: #efbbc2;
+  background: var(--button-danger-soft);
+  color: var(--button-danger);
+  box-shadow: none;
+}
+body :is(button.danger, .danger.screening-card-action, [data-lifecycle-action="permanent-delete"]):not(:disabled):hover {
+  border-color: #df8792;
+  background: #ffecee;
+  color: #972032;
+  box-shadow: 0 4px 12px rgba(180, 35, 54, .09);
+}
+
+button:not(:disabled):active { scale: .96; translate: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+}
+
+/* This follows the desktop rail rules: enterprise pages intentionally own the
+   full canvas, even while the FDE rail is compacted at this viewport width. */
+@media (max-width: 1180px) {
+  body[data-active-view="project"] .app-shell.connector-enterprise-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Top-bar account actions are peers: same target, same visual weight. */
+.topbar-actions > :is(.account-support, .account-logout) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  min-width: 72px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  line-height: 1;
+}
+
+/* The project drawer collapses to a true edge control, not a blank rail. */
+@media (min-width: 981px) {
+  body[data-active-view="queue"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell),
+  body[data-active-view="project"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell) {
+    grid-template-columns: 242px minmax(0, 1fr) 0px !important;
+  }
+  body.context-rail-collapsed .context-rail {
+    min-width: 0;
+    padding: 0;
+    overflow: visible;
+    border-left-color: transparent;
+    border-left-width: 0;
+  }
+  body.context-rail-collapsed .context-rail .context-rail-body,
+  body.context-rail-collapsed .context-rail > .rail-heading > :not(.context-rail-toggle) {
+    display: none;
+    pointer-events: none;
+  }
+  body.context-rail-collapsed .context-rail > .rail-heading {
+    display: block;
+    margin: 0;
+  }
+  .context-rail-toggle,
+  body.context-rail-collapsed .context-rail-toggle {
+    position: absolute;
+    z-index: 5;
+    top: 18px;
+    right: 18px;
+    display: grid;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #c8d5ec;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 1px 2px rgba(24, 50, 104, .08);
+    color: #3159a8;
+    font-size: 0;
+    line-height: 1;
+    writing-mode: horizontal-tb;
+    transition: background-color .16s ease, border-color .16s ease,
+      box-shadow .16s ease, color .16s ease, translate .16s ease, scale .12s ease;
+  }
+  body.context-rail-collapsed .context-rail-toggle { right: 10px; }
+  .context-rail-toggle::before {
+    width: 7px;
+    height: 7px;
+    border-top-width: 1.5px;
+    border-right-width: 1.5px;
+  }
+  .context-rail-toggle:not(:disabled):hover {
+    border-color: #8ca8df;
+    background: #edf3ff;
+    box-shadow: 0 4px 12px rgba(32, 75, 164, .13);
+    color: #214eb6;
+  }
+  body:not(.context-rail-collapsed) .context-rail-toggle:not(:disabled):hover { translate: 2px 0; }
+  body.context-rail-collapsed .context-rail-toggle:not(:disabled):hover { translate: -2px 0; }
+  body.context-rail-collapsed .context-rail-resizer { display: none; }
+}
+/* The enterprise collaboration shell has no sidebar and no project rail, so the
+   collapsed-rail 3-track override must not apply to it: .workspace-main is pinned
+   to grid-column 1 there and would land in the 220px sidebar track. */
+@media (min-width: 981px) and (max-width: 1180px) {
+  body[data-active-view="queue"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell),
+  body[data-active-view="project"].context-rail-collapsed[data-context-rail-width] .app-shell:not(.connector-enterprise-shell) {
+    grid-template-columns: 220px minmax(0, 1fr) 0px !important;
+  }
+}
+@media (max-width: 760px) {
+  .topbar-actions > :is(.account-support, .account-logout) {
+    width: auto;
+    min-width: 44px;
+    padding-inline: 10px;
+  }
+}
+
+/* The application header is a stable global layer, separate from both work panes. */
+.app-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) auto;
+  width: calc(100% - 242px);
+  margin-left: 242px;
+  height: 76px;
+  min-height: 76px;
+  padding: 0 24px 0 18px;
+  background: rgba(248, 250, 255, .96);
+  border-bottom: 1px solid #d8e1f0;
+  box-shadow: 0 1px 0 rgba(26, 54, 111, .03);
+  backdrop-filter: blur(14px);
+}
+.app-topbar-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+  padding-left: 24px;
+}
+.app-topbar-title .eyebrow { color: #3968d6; }
+.app-topbar-title h1 { margin: 1px 0 0; }
+.workspace-topbar-description,
+.app-topbar-description {
+  max-width: 340px;
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-topbar .topbar-actions { justify-self: end; gap: 8px; }
+.app-topbar .context-rail-toggle,
+body.context-rail-collapsed .app-topbar .context-rail-toggle {
+  position: relative;
+  top: auto;
+  right: auto;
+  display: grid;
+  flex: 0 0 36px;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  margin-left: 2px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #b9c7df;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(25, 52, 105, .06);
+  color: #5c6c84;
+  translate: 0;
+}
+.app-topbar .context-rail-toggle::before { display: none; }
+.app-topbar .context-rail-toggle-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .16s cubic-bezier(.2, .75, .25, 1);
+}
+body.context-rail-collapsed .app-topbar .context-rail-toggle-icon { transform: scaleX(-1); }
+.app-topbar .context-rail-toggle:not(:disabled):hover,
+body.context-rail-collapsed .app-topbar .context-rail-toggle:not(:disabled):hover {
+  border-color: #8da8de;
+  background: #edf3ff;
+  box-shadow: 0 4px 12px rgba(32, 75, 164, .12);
+  color: #285cbe;
+  translate: 0;
+}
+.app-shell { min-height: calc(100vh - 76px); }
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  align-self: start;
+  margin-top: -76px;
+}
+
+@media (min-width: 981px) and (max-width: 1180px) {
+  .app-topbar {
+    width: calc(100% - 220px);
+    margin-left: 220px;
+  }
+}
+@media (max-width: 760px) {
+  .app-topbar {
+    position: static;
+    display: flex;
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    min-height: 72px;
+    padding: 12px 15px;
+  }
+  .app-topbar-title { padding-left: 0; }
+  .app-topbar .topbar-actions { width: auto; }
+  .app-topbar .context-rail-toggle { display: none; }
+  .app-shell { min-height: auto; }
+  .app-sidebar { position: static; min-height: auto; height: auto; max-height: none; overflow: visible; margin-top: 0; }
+}
+
+/* ============================================================
+   Unified selection language (2026-09-19).
+   Every tab / chip / toggle group shares ONE selected state:
+   soft blue panel + accent ink + a 2px accent baseline, so
+   "which one is selected" reads identically on every page.
+   Hover stays a lighter tint so hover and selected differ.
+   Dark navigation rails (sidebar, report-index) keep their
+   own inverted treatment and are intentionally excluded.
+   ============================================================ */
+body :is(.filter-tabs button.active, .filter-tabs button[aria-selected="true"],
+  .settings-tabs button.active, .execution-tabs button.active,
+  .connector-settings-tabs button.active, .macro-flow-tab.active,
+  .main-flow-chip.selected, .enterprise-task-map .main-flow-chip.selected,
+  .report-types button.active,
+  .runoff-delivery .delivery-tabs button[aria-pressed="true"]) {
+  border-color: #a9c3f4;
+  background: #e3edff;
+  color: #2457c2;
+  font-weight: 650;
+  box-shadow: inset 0 -2px 0 #295fe8;
+}
+body :is(.filter-tabs button.active span,
+  .settings-tabs button.active span, .execution-tabs button.active span,
+  .connector-settings-tabs button.active span, .macro-flow-tab.active > span) {
+  color: #295fe8;
+}
+/* Idle entries carry no chrome at all — only the selected one wears a panel,
+   so "selected" never competes with idle chips. Hover reuses the exact same
+   selector plus :hover:not(:disabled), which keeps it strictly stronger than
+   idle regardless of what the :is() argument list contains. */
+body :is(.filter-tabs button, .settings-tabs button, .execution-tabs button,
+  .connector-settings-tabs button, .macro-flow-tab, .report-types button,
+  .runoff-delivery .delivery-tabs button):not(.active):not([aria-selected="true"]):not([aria-pressed="true"]) {
+  border-color: transparent;
+  background: transparent;
+  color: #627088;
+  box-shadow: none;
+}
+body :is(.filter-tabs button, .settings-tabs button, .execution-tabs button,
+  .connector-settings-tabs button, .macro-flow-tab, .report-types button,
+  .runoff-delivery .delivery-tabs button):not(.active):not([aria-selected="true"]):not([aria-pressed="true"]):hover:not(:disabled) {
+  border-color: #d7e2f4;
+  background: #f3f7ff;
+  color: #2457c2;
+  box-shadow: none;
+  translate: 0;
+}
+/* Selected delivery tabs keep the panel on hover instead of jumping back. */
+body :is(.runoff-delivery .delivery-tabs button[aria-pressed="true"]:not(:disabled):hover) {
+  border-color: #8fb0ef;
+  background: #d8e6ff;
+  box-shadow: inset 0 -2px 0 #295fe8;
+  translate: 0;
+}
+
+/* Step markers are the same selection idea in a different shape: current step
+   and completed step both stay inside the blue family instead of going mint.
+   Chips keep their card outline (optional/available stay dashed). */
+body :is(.main-flow-chip, .enterprise-task-map .main-flow-chip) {
+  border-color: #d7e2f4;
+  background: #fff;
+  color: #192236;
+}
+body :is(.main-flow-chip.done, .main-flow-chip.optional, .main-flow-chip.available) {
+  border-color: #b5c8f4;
+}
+body :is(.main-flow-chip.current) {
+  border-color: #a9c3f4;
+  background: #eef3ff;
+  box-shadow: none;
+}
+body :is(.connector-progress li.active, .connector-outcome-progress li.active,
+  .authorization-steps li.active) {
+  border-color: #a9c3f4;
+  box-shadow: none;
+}
+body :is(.connector-progress li.active > span, .connector-outcome-progress li.active > span) {
+  background: #295fe8;
+  color: #fff;
+}
+
+/* ============================================================
+   Touch target floor (2026-09-19). styles.css already declares a 44px
+   contract for these controls, but stage-workbench.css (:925 min-height
+   34px, :938 min-height 36px) and brand-theme.css (:771 height 40px) load
+   later and shrink it back. Below 761px the pointer is a finger, so the
+   contract is restored there instead of redesigning the desktop density.
+   ============================================================ */
+@media (max-width: 760px) {
+  body :is(.screening-card-action, .report-index-item,
+    .connector-settings-tabs button, .connector-source-actions button),
+  body .filter-tabs button {
+    min-height: 44px;
+  }
+  body .topbar-actions > :is(.account-support, .account-logout) {
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   Below 981px the project rail has no track to occupy — styles.css sets
+   .context-rail { display: none } up to 1180px and only the 981-1180px range
+   re-instates it — yet the header kept showing its collapse control. The hide
+   declared at :947 also loses to the three-class selector at :883 whenever
+   body carries .context-rail-collapsed, so a dead 36px button stayed visible
+   and held the smallest tap target under 44px on phones.
+   ============================================================ */
+@media (max-width: 980px) {
+  body .app-topbar .context-rail-toggle,
+  body.context-rail-collapsed .app-topbar .context-rail-toggle {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Header must not push itself out of the viewport between the sidebar
+   breakpoint and the desktop grid. The actions column was nowrap and pinned
+   to its max-content width (600-636px) while column 1 held a 190px floor, so
+   761-1180px overflowed: 1024px -> 1048px, 900px -> 1070px. Column 2 may now
+   shrink and wrap, and the decorative chrome yields before the title does.
+   ============================================================ */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .app-topbar {
+    grid-template-columns: minmax(190px, 1fr) minmax(0, auto);
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    height: auto;
+    min-height: 76px;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .app-topbar .topbar-actions {
+    min-width: 0;
+    flex-wrap: wrap;
+    row-gap: 6px;
+    justify-content: flex-end;
+  }
+  .app-topbar .synthetic-pill,
+  .app-topbar .account-summary {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Header containment (2026-09-19).
+
+   An enterprise header carries the whole project name
+   ("苏州启衡智能制造（录屏演示） · 协作入口"). Inside the 76px bar the h1
+   wrapped to four lines and spilled ~50px past the bar into the page, and
+   the entry chip inherited `white-space: normal` from styles.css:361, wrapped
+   inside its pill and stretched the actions row to 54px. Both text zones are
+   single-line with ellipsis now, so the bar keeps exactly its 76px contract
+   (.app-sidebar is pulled up by -76px and depends on that number — a taller
+   bar leaves a white notch above the dark sidebar) and no text leaves its box.
+   Only the two text chips may give up width; the buttons keep their size.
+   ============================================================ */
+@media (min-width: 761px) {
+  .app-topbar {
+    height: 76px;
+    min-height: 76px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .app-topbar-title {
+    align-self: stretch;
+    overflow: visible;
+  }
+  .app-topbar-title .eyebrow,
+  .app-topbar-title h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .app-topbar .topbar-actions {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .app-topbar .topbar-actions > :is(.account-summary, .enterprise-entry-label) {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  .app-topbar .enterprise-entry-label {
+    white-space: nowrap;
+    overflow-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Below 761px the bar already stacks into rows; the two decorative pills are
+   dropped there (they repeat what the entry chip and the buttons say) so the
+   actions stay on ONE row instead of stacking into three and growing the bar
+   to 206px on a 390px phone. */
+@media (max-width: 760px) {
+  body .app-topbar .topbar-actions {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  body .app-topbar .synthetic-pill,
+  body .app-topbar .account-summary {
+    display: none;
+  }
+body .app-topbar .enterprise-entry-label {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Compact desktop header: keep the workbench hierarchy visible without
+   turning the global toolbar into a second page hero. */
+@media (min-width: 1181px) {
+  .app-topbar {
+    height: 64px;
+    min-height: 64px;
+    padding: 0 18px 0 14px;
+  }
+  .app-topbar-title {
+    padding-left: 18px;
+  }
+  .app-topbar-title .eyebrow {
+    font-size: 9px;
+    line-height: 1;
+    letter-spacing: .12em;
+  }
+  .app-topbar-title h1 {
+    margin: 2px 0 0;
+    font-size: 20px;
+    line-height: 1.05;
+  }
+  .workspace-topbar-description,
+  .app-topbar-description {
+    max-width: 420px;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+  .app-topbar .topbar-actions {
+    gap: 7px;
+  }
+  .app-topbar .connection-pill {
+    gap: 6px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .app-topbar .topbar-actions > :is(.account-support, .account-logout) {
+    width: 64px;
+    min-width: 64px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  .app-topbar .context-rail-toggle,
+  body.context-rail-collapsed .app-topbar .context-rail-toggle {
+    flex-basis: 34px;
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    min-height: 34px;
+  }
+  .app-shell {
+    min-height: calc(100vh - 64px);
+  }
+  .app-sidebar {
+    margin-top: -64px;
+  }
+}
+
+/* Borderless topbar actions: keep the hit areas and interaction feedback without button chrome. */
+.app-topbar .topbar-actions > :is(.account-support, .account-logout),
+body .app-topbar .topbar-actions > :is(.account-support, .account-logout),
+body .app-topbar .context-rail-toggle,
+body.context-rail-collapsed .app-topbar .context-rail-toggle {
+  border-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.app-topbar .topbar-actions > :is(.account-support, .account-logout):hover,
+body .app-topbar .topbar-actions > :is(.account-support, .account-logout):hover,
+body .app-topbar .context-rail-toggle:not(:disabled):hover,
+body.context-rail-collapsed .app-topbar .context-rail-toggle:not(:disabled):hover {
+  border-color: transparent !important;
+  background: rgba(41, 95, 232, 0.08) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: #2457c2;
+}
+
+/* ============================================================
+   Enterprise milestone steps (2026-09-19).
+
+   The five phases are real buttons — each one jumps to that phase — but they
+   were painted as plain text: no border, no background, and selection shown
+   only by a text underline, so the row read as five labels with nothing to
+   click. They now wear the same panel language as every other tab group in
+   the console, with a distinct hover and a selected state.
+   ============================================================ */
+body .enterprise-milestones button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #627088;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+  /* Buttons default to white-space:nowrap in the UA sheet, so the five labels
+     could not break and pushed the page 12px wide at 761px (5 x 86px + gaps). */
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+body .enterprise-milestones button:not(:disabled):hover {
+  border-color: #d7e2f4;
+  background: #f3f7ff;
+  color: #2457c2;
+}
+body .enterprise-milestones button[aria-pressed="true"] {
+  border-color: #a9c3f4;
+  background: #e3edff;
+  color: #2457c2;
+  box-shadow: inset 0 -2px 0 #295fe8;
+  text-decoration: none;
+}
+body .enterprise-milestones button:focus-visible {
+  outline: 2px solid #295fe8;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Invitation form inside the member drawer (2026-09-19).
+
+   .fde-member-drawer is capped at 760px (hierarchy-refactor.css:964), so the
+   invitation panel inside it only ever has 674px of usable width. But the
+   desktop four-track grid is switched off by a *viewport* query
+   (styles.css:369, max-width:980px) while the drawer keeps its 760px at every
+   viewport — so above a 981px window the form received
+   `minmax(260px,2fr) minmax(180px,1fr) minmax(120px,.65fr) auto`
+   (styles.css:364). Its floors alone add up to 260+180+120+151+3x12 = 747px,
+   which no `fr` can shrink. Measured on the live instance: the submit button
+   reached 73px past the form, 52px past the panel and 30px past the drawer,
+   and the drawer body got a horizontal scrollbar.
+
+   The drawer is a narrow container at every viewport, so it takes the same
+   two-column arrangement that the 761-980px band already uses. Below 761px
+   styles.css:375 keeps the single column.
+   ============================================================ */
+@media (min-width: 761px) {
+  .fde-member-drawer .invitation-panel .invitation-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
+   Workbench container responsiveness (2026-09-19).
+
+   The project canvas loses width to the fixed navigation and the resizable
+   context rail before the browser viewport reaches its normal breakpoint.
+   Respond to the canvas width itself so cards never collapse into one-letter
+   columns when the outer browser frame or the rail width changes.
+   ============================================================ */
+@container workbench-main (max-width: 900px) {
+  .connector-shell > .connector-workspace-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .connector-workspace-layout > .connector-primary-tabs {
+    position: static;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px;
+  }
+  .connector-workspace-nav-intro,
+  .connector-workspace-nav-heading {
+    grid-column: 1 / -1;
+  }
+  .connector-overview-metrics,
+  .mapping-metrics,
+  .decision-score-strip,
+  .enterprise-report-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container workbench-main (max-width: 720px) {
+  .connector-shell-head,
+  .connector-workbench-head,
+  .connector-entry-card,
+  .connector-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .connector-workbench-head,
+  .connector-entry-card {
+    display: grid;
+  }
+  .connector-role-control,
+  .connector-boundary {
+    min-width: 0;
+  }
+}
+
+@container workbench-main (max-width: 560px) {
+  .connector-workspace-layout > .connector-primary-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container workbench-main (max-width: 430px) {
+  .connector-workspace-layout > .connector-primary-tabs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* FDE project context switcher: compact enough for the rail, explicit enough
+   to prevent an accidental identity or permission switch. */
+.context-project-switcher {
+  display: grid;
+  gap: 8px;
+  margin: -6px 0 18px;
+  padding: 12px;
+  border: 1px solid #d6e1f3;
+  border-radius: 14px;
+  background: #f7f9ff;
+  box-shadow: 0 8px 18px rgba(42, 76, 144, .06);
+}
+.context-project-switcher-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.context-project-switcher-mode {
+  color: #3566dd;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.context-project-switcher label {
+  display: grid;
+  gap: 5px;
+  color: #53647f;
+  font-size: 11px;
+  font-weight: 650;
+}
+.context-project-switcher select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 34px 0 11px;
+  border: 1px solid #b9cbed;
+  border-radius: 10px;
+  background: #fff;
+  color: #17233d;
+  font-size: 12px;
+  font-weight: 650;
+  outline: none;
+}
+.context-project-switcher select:hover { border-color: #7ea0e7; }
+.context-project-switcher select:focus-visible {
+  border-color: #3566dd;
+  box-shadow: 0 0 0 3px rgba(53, 102, 221, .14);
+}
+.context-project-switcher small {
+  color: #71809b;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* Keep the enhanced project canvas to a single content column. */
+.connector-shell > .connector-workspace-layout {
+  display: block;
+  grid-template-columns: minmax(0, 1fr);
+}
+.connector-workspace-layout > .connector-workspace-content { min-width: 0; }
+
+.sidebar-subnav-list {
+  margin: -7px 0 4px 33px;
+  border-left: 1px solid #2d4267;
+  padding-left: 9px;
+  display: grid;
+  gap: 0;
+  padding: 2px 0 4px;
+  max-height: 320px;
+  opacity: 1;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: opacity .14s ease, transform .2s cubic-bezier(.2, .75, .25, 1);
+}
+.sidebar-subnav-list.is-collapsed {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+}
+.sidebar-subnav-group {
+  display: grid;
+  gap: 0;
+}
+.sidebar-subnav-group-label {
+  padding: 2px 8px 1px;
+  color: #6f87b4;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.sidebar-subnav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 25px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #8fa2c4;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 650;
+  text-align: left;
+}
+.sidebar-nav .sidebar-subnav-item {
+  min-height: 28px;
+  height: 28px;
+  gap: 4px;
+  border-radius: 5px;
+  line-height: 1;
+}
+.sidebar-subnav-item::before {
+  flex: 0 0 15px;
+  color: #637da9;
+  content: attr(data-nav-index);
+  font: 700 8px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.sidebar-subnav-item:hover,
+.sidebar-subnav-item:focus-visible {
+  background: #192a49;
+  color: #eef3ff;
+  outline: none;
+}
+.sidebar-subnav-item.active {
+  background: #223a67;
+  box-shadow: inset 2px 0 #7ea4ff;
+  color: #fff;
+}
+.sidebar-subnav-item.active::before { color: #a9c4ff; }
+.sidebar-subnav-item.is-future { color: #7487a9; }
+.sidebar-subnav-item.is-future::after {
+  margin-left: 3px;
+  color: #7184a5;
+  content: "待前置";
+  font-size: 8px;
+  font-weight: 700;
+}
+.enterprise-sidebar-subnav {
+  margin-top: -4px;
+  max-height: 220px;
+}
+.enterprise-sidebar-subnav-item {
+  justify-content: space-between;
+  gap: 5px;
+  min-height: 30px !important;
+  height: 30px !important;
+}
+.enterprise-sidebar-subnav-item > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.enterprise-sidebar-subnav-item > small {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: #7184a5;
+  font-size: 8px;
+  white-space: nowrap;
+}
+.enterprise-sidebar-subnav-item.is-future::after { content: none; }
+.enterprise-sidebar-subnav-item.active > small { color: #c6d8ff; }
+@media (max-width: 760px) {
+  .sidebar-subnav-list { margin-left: 8px; }
+  .sidebar-nav .sidebar-subnav-item { min-height: 30px; height: 30px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-subnav-list {
+    transition: none;
+    transform: none;
+  }
+  .sidebar-subnav-list.is-collapsed { transform: none; }
+}
+
+/* Unified action surfaces: hierarchy comes from tint and opacity, not outline-vs-fill. */
+:root {
+  --button-radius: 9px;
+  --button-outline: transparent;
+  --button-outline-hover: transparent;
+  --button-quiet: rgba(72, 103, 178, .08);
+  --button-quiet-hover: rgba(72, 103, 178, .14);
+  --button-primary: rgba(72, 103, 178, .92);
+  --button-primary-hover: rgba(61, 88, 157, .96);
+}
+
+body :is(
+  .quiet-button,
+  .secondary-button,
+  .screening-card-action,
+  .rail-action,
+  .topbar-actions > button,
+  .connector-secondary-button,
+  .connector-gate button,
+  .connector-success-strip button,
+  .connector-source-actions button,
+  .mapping-actions button,
+  .qualification-workbench button,
+  .runoff-delivery button:not([data-delivery-tab]),
+  .readiness-panel button,
+  #reports-content .report-evidence-actions button,
+  .source-evidence button,
+  .workflow-task-summary button,
+  .project-section-gate button,
+  .filter-tabs button,
+  .execution-tabs button,
+  .connector-settings-tabs button,
+  .settings-tabs button,
+  .role-menu button,
+  .enterprise-milestones button
+) {
+  border-color: transparent;
+  border-radius: var(--button-radius);
+  background: var(--button-quiet);
+  box-shadow: 0 1px 1px rgba(35, 58, 105, .025);
+  color: #385b9f;
+  font-family: inherit;
+  font-weight: 650;
+  letter-spacing: .005em;
+}
+
+body :is(
+  .quiet-button,
+  .secondary-button,
+  .screening-card-action,
+  .rail-action,
+  .topbar-actions > button,
+  .connector-secondary-button,
+  .connector-gate button,
+  .connector-success-strip button,
+  .connector-source-actions button,
+  .mapping-actions button,
+  .qualification-workbench button,
+  .runoff-delivery button:not([data-delivery-tab]),
+  .readiness-panel button,
+  #reports-content .report-evidence-actions button,
+  .source-evidence button,
+  .workflow-task-summary button,
+  .project-section-gate button,
+  .filter-tabs button,
+  .execution-tabs button,
+  .connector-settings-tabs button,
+  .settings-tabs button,
+  .role-menu button,
+  .enterprise-milestones button
+):not(:disabled):hover {
+  border-color: transparent;
+  background: var(--button-quiet-hover);
+  box-shadow: 0 2px 5px rgba(35, 58, 105, .06);
+  color: #2f4f91;
+}
+
+body :is(
+  .primary-button,
+  .enterprise-actions button:first-child,
+  .connector-source-actions .primary,
+  .connector-source-actions .primary-button,
+  .mapping-actions button.primary,
+  .qualification-workbench button[type="submit"],
+  .qualification-workbench [data-q-edit],
+  .runoff-delivery button[type="submit"],
+  .runoff-delivery .plan-draft-actions button:first-child,
+  .runoff-delivery .delivery-tabs button[aria-pressed="true"]
+) {
+  border-color: transparent;
+  border-radius: var(--button-radius);
+  background: var(--button-primary);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 650;
+  letter-spacing: .005em;
+}
+
+body :is(
+  .primary-button,
+  .enterprise-actions button:first-child,
+  .connector-source-actions .primary,
+  .connector-source-actions .primary-button,
+  .mapping-actions button.primary,
+  .qualification-workbench button[type="submit"],
+  .qualification-workbench [data-q-edit],
+  .runoff-delivery button[type="submit"],
+  .runoff-delivery .plan-draft-actions button:first-child,
+  .runoff-delivery .delivery-tabs button[aria-pressed="true"]
+):not(:disabled):hover {
+  border-color: transparent;
+  background: var(--button-primary-hover);
+  color: #fff;
+}
+
+/* Keep the three global topbar controls borderless while sharing the type contract. */
+body .app-topbar .topbar-actions > :is(.account-support, .account-logout),
+body .app-topbar .context-rail-toggle,
+body.context-rail-collapsed .app-topbar .context-rail-toggle {
+  border-color: transparent !important;
+  border-radius: var(--button-radius);
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  font-family: inherit;
+  font-weight: 650;
+  letter-spacing: .005em;
+}
+
+body .app-topbar .topbar-actions > :is(.account-support, .account-logout):hover,
+body .app-topbar .context-rail-toggle:not(:disabled):hover,
+body.context-rail-collapsed .app-topbar .context-rail-toggle:not(:disabled):hover {
+  border-color: transparent !important;
+  background: rgba(72, 103, 178, .08) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Enterprise workspace density: keep the evidence flow readable without
+   changing its data, actions, or navigation behavior. */
+body[data-active-view="enterprise"] #enterprise {
+  max-width: 1680px;
+}
+
+/* The page title already identifies the enterprise report. Keep only the
+   role in the action area so the company name is not repeated twice. */
+body[data-active-view="enterprise"] .app-topbar .enterprise-entry-label {
+  display: none;
+}
+
+body[data-active-view="enterprise"] .unified-enterprise-board {
+  gap: 0;
+  margin-bottom: 0;
+}
+
+body[data-active-view="enterprise"] .enterprise-milestones {
+  display: none;
+}
+
+body[data-active-view="enterprise"] .enterprise-current-task {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-active-view="enterprise"] .enterprise-current-task h3 {
+  margin: 7px 0 6px;
+  font-size: 22px;
+}
+
+body[data-active-view="enterprise"] .enterprise-current-task p {
+  max-width: 72ch;
+  margin: 0;
+  line-height: 1.5;
+}
+
+body[data-active-view="enterprise"] .enterprise-current-task button {
+  margin-top: 8px;
+}
+
+body[data-active-view="enterprise"] .unified-enterprise-board > section:not(.enterprise-current-task),
+body[data-active-view="enterprise"] .unified-enterprise-board > p,
+body[data-active-view="enterprise"] .unified-enterprise-board > .enterprise-acquisition-actions {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+body[data-active-view="enterprise"] .unified-enterprise-board > section:not(.enterprise-current-task) h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+body[data-active-view="enterprise"] .unified-enterprise-board > section:not(.enterprise-current-task) p,
+body[data-active-view="enterprise"] .unified-enterprise-board > p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+body[data-active-view="enterprise"] .enterprise-acquisition-actions {
+  gap: 8px;
+  padding: 12px 0;
+}
+
+body[data-active-view="enterprise"] .enterprise-recent {
+  margin: 14px 0 0;
+  padding: 14px 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .72);
+}
+
+body[data-active-view="enterprise"] .enterprise-recent header {
+  min-height: 28px;
+}
+
+body[data-active-view="enterprise"] .enterprise-recent-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) auto auto;
+  align-items: center;
+  padding: 10px 0;
+}
+
+body[data-active-view="enterprise"] .qualification-workbench {
+  margin: 14px 0;
+  padding: 16px 0;
+}
+
+body[data-active-view="enterprise"] .qualification-workbench header {
+  align-items: flex-start;
+}
+
+body[data-active-view="enterprise"] .qualification-workbench h3 {
+  font-size: 18px;
+}
+
+body[data-active-view="enterprise"] .qualification-workbench p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+body[data-active-view="enterprise"] #enterprise > .enterprise-connector-panel,
+body[data-active-view="enterprise"] #enterprise > details,
+body[data-active-view="enterprise"] #enterprise > [data-file-workspace] {
+  margin-top: 14px;
+}
+
+body[data-active-view="enterprise"] .runoff-enterprise-delivery {
+  margin: 14px 0;
+  padding: 16px 18px;
+}
+
+body[data-active-view="enterprise"] .runoff-enterprise-delivery h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+body[data-active-view="enterprise"] .runoff-enterprise-delivery h4 {
+  margin: 12px 0 8px;
+  font-size: 16px;
+}
+
+body[data-active-view="enterprise"] .runoff-enterprise-delivery p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  body[data-active-view="enterprise"] #enterprise {
+    max-width: none;
+  }
+
+  body[data-active-view="enterprise"] .enterprise-current-task {
+    padding: 14px 0;
+  }
+
+  body[data-active-view="enterprise"] .enterprise-recent {
+    padding-inline: 12px;
+  }
+
+  body[data-active-view="enterprise"] .enterprise-recent-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Layer separation. The application header is a surface of its own: it takes a
+   deeper chrome tint, a stronger lower edge and a soft drop shadow, while the
+   canvas keeps the brand canvas tone and the summary rail stays pure white.
+   Header / workspace / rail therefore read as three layers instead of one wash.
+   --------------------------------------------------------------------------- */
+.app-topbar {
+  background: rgba(221, 231, 246, .97);
+  border-bottom: 1px solid #bccde8;
+  box-shadow: 0 2px 12px rgba(23, 38, 75, .06);
+}
+/* This band is deeper than the canvas, so its text takes its own contrast pair
+   instead of the canvas-tuned muted token. */
+.app-topbar .workspace-topbar-description,
+.app-topbar .account-summary { color: #4b5a74; }
+.app-topbar-title .eyebrow { color: #2b55c0; }
+
+/* ---------------------------------------------------------------------------
+   One first-row offset under the header, identical on every view. The panel
+   owns the offset and the first row loses its own top margin, so the gap no
+   longer depends on which module happens to render first.
+   --------------------------------------------------------------------------- */
+.workspace-main > .workspace-view > [data-view-panel],
+.workspace-main > [data-view-panel] {
+  padding-top: 20px;
+}
+.workspace-main [data-view-panel] > :first-child,
+.workspace-main [data-view-panel] > :first-child > :first-child,
+.workspace-main [data-view-panel] > :first-child > :first-child > :first-child {
+  margin-top: 0;
+}
+#prep > .runoff-delivery { padding-top: 0; }
+/* The flow board is display:contents, so the stage panel is the first real box. */
+#project-content > .connector-project-panel { margin-top: 0; }
+
+/* ---------------------------------------------------------------------------
+   FDE workbench layout system
+   Keep the five first-level workspaces on one visual grid. This is deliberately
+   scoped to the FDE views so the enterprise workspace keeps its own density
+   rules. No content, action, or interaction is changed here.
+   --------------------------------------------------------------------------- */
+:root {
+  --fde-workbench-max: 1440px;
+  --fde-workbench-gap: 16px;
+  --fde-surface-radius: 14px;
+  --fde-surface-line: #d8e1ef;
+  --fde-surface-soft: #f7f9fd;
+  --fde-control-height: 40px;
+  --fde-control-radius: 10px;
+}
+
+body[data-active-view="queue"] #queue,
+body[data-active-view="project"] #project-content,
+body[data-active-view="prep"] #prep,
+body[data-active-view="reports"] #reports-content,
+body[data-active-view="settings"] #settings-content {
+  width: min(var(--fde-workbench-max), 100%);
+  margin-inline: auto;
+}
+
+body[data-active-view="queue"] #queue,
+body[data-active-view="project"] #project-content,
+body[data-active-view="prep"] #prep,
+body[data-active-view="reports"] #reports-content,
+body[data-active-view="settings"] #settings-content {
+  display: grid;
+  align-content: start;
+  gap: var(--fde-workbench-gap);
+}
+
+/* Shared action hierarchy: primary = filled, secondary = quiet surface,
+   tertiary/tab = transparent surface. All keep the same hit-area rhythm. */
+body[data-active-view="queue"] .workspace-main :is(.primary-button, .quiet-button, .secondary-button, .screening-card-action),
+body[data-active-view="project"] .workspace-main :is(.primary-button, .quiet-button, .secondary-button, .project-section-gate button),
+body[data-active-view="prep"] .workspace-main :is(button),
+body[data-active-view="reports"] .workspace-main :is(.primary-button, .quiet-button, .secondary-button, .report-index-item, .report-types button),
+body[data-active-view="settings"] .workspace-main :is(.quiet-button, .secondary-button, .screening-card-action, .settings-tabs button) {
+  min-height: var(--fde-control-height);
+  border-radius: var(--fde-control-radius);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+body[data-active-view="queue"] .workspace-main :is(.quiet-button, .secondary-button, .screening-card-action),
+body[data-active-view="project"] .workspace-main :is(.quiet-button, .secondary-button, .project-section-gate button),
+body[data-active-view="prep"] .workspace-main :is(.delivery-tabs button, .delivery-tools button),
+body[data-active-view="reports"] .workspace-main :is(.quiet-button, .secondary-button, .report-index-item, .report-types button),
+body[data-active-view="settings"] .workspace-main :is(.screening-card-action, .settings-tabs button) {
+  border-color: transparent;
+  background: rgba(72, 103, 178, .08);
+}
+
+body[data-active-view="queue"] .workspace-main :is(.quiet-button, .secondary-button, .screening-card-action):hover,
+body[data-active-view="project"] .workspace-main :is(.quiet-button, .secondary-button, .project-section-gate button):hover,
+body[data-active-view="prep"] .workspace-main :is(.delivery-tabs button, .delivery-tools button):hover,
+body[data-active-view="reports"] .workspace-main :is(.quiet-button, .secondary-button, .report-index-item, .report-types button):hover,
+body[data-active-view="settings"] .workspace-main :is(.screening-card-action, .settings-tabs button):hover {
+  background: rgba(72, 103, 178, .14);
+}
+
+/* Queue: four facts, one filter row, then the list. */
+body[data-active-view="queue"] #metric-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+body[data-active-view="queue"] .metric-card {
+  min-height: 104px;
+  padding: 16px 18px;
+  border-color: var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  background: rgba(255, 255, 255, .82);
+  box-shadow: none;
+}
+
+body[data-active-view="queue"] .queue-toolbar,
+body[data-active-view="queue"] .screening-list {
+  margin: 0;
+}
+
+body[data-active-view="queue"] .queue-toolbar {
+  align-items: center;
+  min-height: var(--fde-control-height);
+  padding: 4px;
+  border-radius: var(--fde-control-radius);
+  background: var(--fde-surface-soft);
+}
+
+body[data-active-view="queue"] .screening-list {
+  gap: 12px;
+}
+
+body[data-active-view="queue"] .screening-card {
+  min-height: 126px;
+  border-color: var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  box-shadow: none;
+}
+
+body[data-active-view="queue"] .screening-card-main {
+  padding: 16px 18px;
+}
+
+/* Project: the outer work surface is the only parent shell; inner content is
+   separated with dividers and soft fills instead of repeated framed cards. */
+body[data-active-view="project"] .connector-project-panel {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(31, 53, 93, .05);
+}
+
+body[data-active-view="project"] .connector-project-panel :is(.connector-shell, .connector-section, .connector-overview) {
+  border-radius: 10px;
+}
+
+body[data-active-view="project"] .connector-project-panel :is(.connector-section, .connector-overview) {
+  padding: 16px 0 0;
+  border-top-color: var(--fde-surface-line);
+  background: transparent;
+}
+
+body[data-active-view="project"] .connector-project-panel :is(.workflow-task-summary, .project-section-gate, .decision-banner) {
+  border-color: var(--fde-surface-line);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+/* Prep: keep the safety notice and tools together, and turn an empty result
+   area into an intentional state instead of a blank stretch of canvas. */
+body[data-active-view="prep"] .runoff-delivery {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+body[data-active-view="prep"] .delivery-boundary {
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid #ecd9ad;
+  border-radius: var(--fde-surface-radius);
+}
+
+body[data-active-view="prep"] .delivery-tools,
+body[data-active-view="prep"] .delivery-tabs {
+  margin: 0;
+}
+
+body[data-active-view="prep"] .delivery-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: var(--fde-control-height);
+}
+
+body[data-active-view="prep"] .delivery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--fde-surface-line);
+  border-radius: var(--fde-control-radius);
+  background: var(--fde-surface-soft);
+}
+
+body[data-active-view="prep"] .delivery-list:empty {
+  display: none;
+}
+
+body[data-active-view="prep"] .delivery-list:empty + p {
+  margin: 0;
+  padding: 24px;
+  border: 1px dashed var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  background: #fff;
+  color: var(--muted);
+}
+
+/* Reports: package controls are a header row, while index and paper are the
+   two peer surfaces below it. */
+body[data-active-view="reports"] .report-package-bar {
+  margin: 0;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--fde-surface-line);
+}
+
+body[data-active-view="reports"] .report-layout {
+  grid-template-columns: minmax(240px, .32fr) minmax(0, .68fr);
+  gap: var(--fde-workbench-gap);
+  margin: 0;
+}
+
+body[data-active-view="reports"] :is(.report-index, .report-paper) {
+  border: 1px solid var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  box-shadow: none;
+}
+
+body[data-active-view="reports"] .report-index {
+  padding: 12px;
+  background: var(--fde-surface-soft);
+}
+
+body[data-active-view="reports"] .report-paper {
+  padding: 24px;
+}
+
+/* Settings: category tabs, lifecycle summary, filters, and results use the
+   same vertical rhythm as the other views. */
+body[data-active-view="settings"] #settings-content {
+  gap: 14px;
+}
+
+body[data-active-view="settings"] .connector-settings-tabs {
+  margin: 0;
+  min-height: var(--fde-control-height);
+  border-radius: var(--fde-control-radius);
+}
+
+body[data-active-view="settings"] .settings-summary {
+  min-height: 108px;
+  padding: 18px 20px;
+  border-color: var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+}
+
+body[data-active-view="settings"] .settings-tabs {
+  margin: 0;
+  padding: 0 0 4px;
+}
+
+body[data-active-view="settings"] .settings-list {
+  gap: 12px;
+}
+
+body[data-active-view="settings"] .settings-item,
+body[data-active-view="settings"] .settings-empty {
+  border-color: var(--fde-surface-line);
+  border-radius: var(--fde-surface-radius);
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  body[data-active-view="queue"] #queue,
+  body[data-active-view="queue"] #metric-strip,
+  body[data-active-view="queue"] .metric-card,
+  body[data-active-view="queue"] .queue-toolbar,
+  body[data-active-view="queue"] .filter-tabs,
+  body[data-active-view="queue"] .screening-list,
+  body[data-active-view="queue"] .screening-card {
+    min-width: 0;
+  }
+
+  body[data-active-view="queue"] .queue-toolbar {
+    flex-wrap: wrap;
+  }
+
+  body[data-active-view="queue"] .filter-tabs {
+    flex: 1 1 280px;
+  }
+
+  body[data-active-view="queue"] #metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-active-view="reports"] .report-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-active-view="queue"] #metric-strip {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-active-view="queue"] .queue-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  body[data-active-view="prep"] .delivery-tools {
+    justify-content: stretch;
+  }
+
+  body[data-active-view="prep"] .delivery-tools button {
+    width: 100%;
+  }
+}
+
+/* Final pass: one visible frame for diagnosis, and keep the report utility
+   action out of the content grid. */
+body[data-active-view="project"] .connector-project-panel {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body[data-active-view="reports"] #reports-content {
+  position: relative;
+}
+
+body[data-active-view="reports"] .report-print-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  margin: 0;
+}
+
+body[data-active-view="prep"] .delivery-list:empty + p {
+  min-height: 132px;
+  display: grid;
+  align-content: center;
+}
+
+/* FDE server workbench refinement: keep the content axis broad enough for a
+   dense operator view while preserving a hard ceiling before the rail can be
+   crowded. */
+:root {
+  --fde-workbench-max: 1520px;
+}
+
+body[data-active-view="queue"] .workspace-main,
+body[data-active-view="project"] .workspace-main,
+body[data-active-view="prep"] .workspace-main,
+body[data-active-view="reports"] .workspace-main,
+body[data-active-view="settings"] .workspace-main {
+  min-width: 0;
+}
+
+body[data-active-view="queue"] .workspace-main :is(h2, h3, h4),
+body[data-active-view="project"] .workspace-main :is(h2, h3, h4),
+body[data-active-view="prep"] .workspace-main :is(h2, h3, h4),
+body[data-active-view="reports"] .workspace-main :is(h2, h3, h4),
+body[data-active-view="settings"] .workspace-main :is(h2, h3, h4) {
+  text-wrap: balance;
+}
+
+body[data-active-view="queue"] .workspace-main :is(.metric-card strong, .card-score strong),
+body[data-active-view="project"] .workspace-main :is(.main-flow-count, .project-state-summary strong),
+body[data-active-view="settings"] .workspace-main .settings-stats b {
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-active-view="project"] .connector-shell {
+  max-width: none;
+  margin-inline: 0;
+  border-radius: 16px;
+}
+
+body[data-active-view="project"] .connector-shell > :is(.connector-primary-tabs, .connector-section, .connector-overview, .connector-history) {
+  min-width: 0;
+}
+
+body[data-active-view="project"] .connector-shell > :is(.connector-section, .connector-overview, .connector-history) {
+  border-radius: 0;
+}
+
+body[data-active-view="prep"] .delivery-list:empty + p {
+  min-height: 160px;
+  max-width: none;
+  background: rgba(255, 255, 255, .78);
+}
+
+body[data-active-view="reports"] .report-layout,
+body[data-active-view="settings"] .settings-list {
+  min-width: 0;
+}
+
+/* Taste pass: quieter chrome, stronger action hierarchy, and one restrained
+   interaction language across the FDE workbench. This is visual-only: no
+   route, data, state, or control behavior is changed. */
+:root {
+  --fde-canvas: #f5f7fb;
+  --fde-surface-soft: #f8faff;
+  --fde-accent: #3567d6;
+  --fde-accent-deep: #2d58bd;
+  --fde-accent-wash: rgba(53, 103, 214, .08);
+  --fde-accent-wash-strong: rgba(53, 103, 214, .13);
+  --fde-surface-radius: 12px;
+  --fde-control-radius: 8px;
+  --button-radius: var(--fde-control-radius);
+  --button-quiet: var(--fde-accent-wash);
+  --button-quiet-hover: var(--fde-accent-wash-strong);
+  --button-primary: var(--fde-accent);
+  --button-primary-hover: var(--fde-accent-deep);
+}
+
+html, body,
+.workspace-main { background: var(--fde-canvas); }
+
+.app-topbar {
+  background: rgba(248, 250, 253, .98);
+  border-bottom-color: #d7e0ec;
+  box-shadow: 0 2px 10px rgba(23, 38, 75, .045);
+}
+
+.app-topbar-title .eyebrow,
+.eyebrow { color: var(--fde-accent); }
+
+body[data-active-view] .workspace-main :is(.primary-button, .quiet-button,
+.secondary-button, .screening-card-action, .project-section-gate button,
+.report-index-item, .report-types button, .settings-tabs button,
+.delivery-tabs button, .delivery-tools button) {
+  border-radius: var(--fde-control-radius);
+  transition: background-color .16s ease, border-color .16s ease,
+    color .16s ease, box-shadow .16s ease, transform .12s ease;
+}
+
+body[data-active-view] .workspace-main :is(.primary-button, .quiet-button,
+.secondary-button, .screening-card-action, .project-section-gate button,
+.report-index-item, .report-types button, .settings-tabs button,
+.delivery-tabs button, .delivery-tools button):active {
+  transform: translateY(1px);
+}
+
+body[data-active-view] .workspace-main .primary-button {
+  border-color: transparent;
+  background: var(--fde-accent);
+  box-shadow: 0 4px 10px rgba(53, 103, 214, .16);
+}
+
+body[data-active-view] .workspace-main .primary-button:hover {
+  background: var(--fde-accent-deep);
+  box-shadow: 0 5px 12px rgba(53, 103, 214, .2);
+}
+
+body[data-active-view] .workspace-main :is(.quiet-button, .secondary-button,
+.screening-card-action, .project-section-gate button, .report-types button,
+.settings-tabs button, .delivery-tabs button, .delivery-tools button) {
+  border-color: transparent;
+  background: var(--fde-accent-wash);
+  color: #31579f;
+}
+
+body[data-active-view] .workspace-main :is(.quiet-button, .secondary-button,
+.screening-card-action, .project-section-gate button, .report-types button,
+.settings-tabs button, .delivery-tabs button, .delivery-tools button):hover {
+  border-color: transparent;
+  background: var(--fde-accent-wash-strong);
+  color: var(--fde-accent-deep);
+}
+
+body[data-active-view="queue"] .queue-toolbar {
+  background: transparent;
+  padding-inline: 0;
+}
+
+body[data-active-view="queue"] .filter-tabs {
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--fde-control-radius);
+  background: var(--fde-surface-soft);
+}
+
+body[data-active-view="queue"] .filter-tabs button {
+  border-color: transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #627088;
+}
+
+body[data-active-view="queue"] .filter-tabs button[aria-selected="true"] {
+  background: #e7eefc;
+  color: var(--fde-accent-deep);
+  box-shadow: inset 0 0 0 1px rgba(53, 103, 214, .12);
+}
+
+body[data-active-view="queue"] .screening-card {
+  background: rgba(255, 255, 255, .9);
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+
+body[data-active-view="queue"] .screening-card:hover,
+body[data-active-view="queue"] .screening-card.selected {
+  border-color: #a9bee9;
+  box-shadow: 0 8px 20px rgba(31, 53, 93, .07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-active-view] .workspace-main :is(.primary-button, .quiet-button,
+  .secondary-button, .screening-card-action, .project-section-gate button,
+  .report-index-item, .report-types button, .settings-tabs button,
+  .delivery-tabs button, .delivery-tools button, .screening-card) {
+    transition: none;
+  }
+}
+
+/* Project frame hierarchy: one work-surface boundary, then dividers and
+   tonal surfaces. Nested cards keep their semantics without competing
+   outlines; action priority continues to come from tint and weight. */
+body[data-active-view="project"] {
+  --project-divider: #e1e7f0;
+}
+
+body[data-active-view="project"] .connector-shell {
+  border-color: var(--fde-surface-line);
+  box-shadow: none;
+}
+
+body[data-active-view="project"] .connector-shell .workflow-task-summary {
+  border: 0;
+  border-radius: var(--fde-control-radius);
+  background: var(--fde-accent-wash);
+}
+
+body[data-active-view="project"] .connector-shell .connector-overview-metrics {
+  border: 0;
+  border-block: 1px solid var(--project-divider);
+  border-radius: 0;
+  background: transparent;
+}
+
+body[data-active-view="project"] .connector-shell .connector-next-card,
+body[data-active-view="project"] .connector-shell .connector-boundary-card {
+  border: 0;
+  box-shadow: none;
+}
+
+body[data-active-view="project"] .connector-shell .connector-next-card {
+  border-radius: var(--fde-control-radius);
+  background: var(--fde-accent-wash);
+}
+
+body[data-active-view="project"] .connector-shell .connector-boundary-card {
+  border-radius: var(--fde-control-radius);
+  background: #f5f8f7;
+}
+
+body[data-active-view="project"] :is(.connector-shell .readiness-panel, .enterprise-history) {
+  margin-block: 12px 0;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 1px solid var(--project-divider);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body[data-active-view="project"] .connector-shell .readiness-dimensions > article {
+  border: 0;
+  border-top: 1px solid var(--project-divider);
+  border-radius: 0;
+  background: transparent;
+}
+
+body[data-active-view="project"] .connector-shell .readiness-dimensions > article:last-child {
+  border-bottom: 1px solid var(--project-divider);
+}
+
+body[data-active-view="project"] :is(.enterprise-history fieldset,
+  .enterprise-history-item) {
+  border-radius: 0;
+}
+
+body[data-active-view="project"] .enterprise-history fieldset {
+  border: 0;
+  border-top: 1px solid var(--project-divider);
+  padding-inline: 0;
+}
+
+body[data-active-view="project"] .connector-shell button {
+  border-color: transparent;
+}
+
+body[data-active-view="project"] .connector-shell button:focus-visible {
+  border-color: transparent;
+}
+
+/* Unified centered modal language for enterprise choices and FDE member actions. */
+:root {
+  --workbench-modal-radius: 18px;
+  --workbench-modal-border: #d4e1d9;
+  --workbench-modal-backdrop: rgba(17, 27, 23, .48);
+}
+
+body :is(.choice-modal, .fde-member-drawer) {
+  border: 1px solid var(--workbench-modal-border);
+  border-radius: var(--workbench-modal-radius);
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(26, 54, 41, .2);
+}
+
+body .choice-modal-root {
+  background: var(--workbench-modal-backdrop);
+  backdrop-filter: blur(2px);
+}
+
+body .fde-member-drawer {
+  width: min(760px, calc(100vw - 32px));
+  max-height: min(760px, calc(100dvh - 40px));
+  overflow: hidden;
+}
+
+body .fde-member-drawer::backdrop {
+  background: var(--workbench-modal-backdrop);
+  backdrop-filter: blur(2px);
+}
+
+body .fde-member-drawer-shell {
+  max-height: min(760px, calc(100dvh - 40px));
+  overflow: hidden;
+}
+
+body .fde-member-drawer .fde-flow-drawer-head {
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid var(--workbench-line);
+  background: #fff;
+}
+
+body .fde-member-drawer .fde-flow-drawer-head h3 {
+  margin: 5px 0 0;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+body .fde-member-drawer .fde-member-drawer-body {
+  min-height: 0;
+  padding: 16px 22px 22px;
+  background: #fff;
+}
+
+body .fde-member-drawer .invitation-panel {
+  margin-top: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body :is(.choice-modal-close, .workbench-modal-close) {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #53665f;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+
+body :is(.choice-modal-close, .workbench-modal-close):hover {
+  border-color: transparent;
+  background: #f5faf7;
+  color: var(--workbench-ink);
+}
+
+body :is(.choice-modal-close, .workbench-modal-close):focus-visible {
+  outline: 3px solid rgba(74, 155, 114, .3);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  body .fde-member-drawer {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 16px;
+  }
+
+  body .fde-member-drawer-shell {
+    max-height: calc(100dvh - 20px);
+  }
+
+  body .fde-member-drawer .fde-flow-drawer-head {
+    padding: 16px 16px 12px;
+  }
+
+  body .fde-member-drawer .fde-member-drawer-body {
+    padding: 12px 16px 16px;
+  }
+}

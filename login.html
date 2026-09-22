@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="fde-core-favicon.svg" type="image/svg+xml">
+  <title>径流·FDE CORE</title>
+  <link rel="stylesheet" href="login.css?v=20260919-login-header-3">
+</head>
+<body>
+  <main class="login-shell">
+    <header class="login-topbar">
+      <div class="brand-lockup product-lockup">
+        <img class="product-logo" src="fde-core-logo-transparent.png" width="1620" height="277" alt="FDE CORE - 径流，远程优先的交付工作台">
+      </div>
+    </header>
+    <section class="brand-panel" aria-labelledby="brand-title">
+      <div class="brand-copy">
+        <span>从证据出发，决定下一步</span>
+        <h1 id="brand-title">先验证数据基础，<br>再决定是否驻场。</h1>
+        <p>企业提交够判断的证据，服务团队在隔离工作台完成诊断，并把驻场决策落到可复核的依据上。</p>
+        <ol class="diagnosis-path" aria-label="诊断路径">
+          <li><span>01</span><b>最小材料</b><small>企业授权提交</small></li>
+          <li><span>02</span><b>证据诊断</b><small>FDE 隔离分析</small></li>
+          <li><span>03</span><b>决策确认</b><small>双方复核结论</small></li>
+        </ol>
+      </div>
+      <div class="boundary-note"><span class="boundary-status" aria-hidden="true"></span><div><b>本地合成验证环境</b><span>演示账号与数据仅用于产品验收，不代表真实企业结论。</span></div></div>
+    </section>
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="login-context"><span class="context-index">01</span><span>身份验证</span><span class="context-line"></span><span>受控访问</span></div>
+        <div class="login-heading"><span class="eyebrow">RUNOFF / ACCESS</span><h2 data-page-title>登录径流</h2><p data-page-note>身份由服务端会话确认，页面地址不能切换角色。</p></div>
+        <section class="invitation-identity" data-invitation-identity hidden aria-label="受邀身份">
+          <div><span>企业</span><strong data-invitation-enterprise></strong></div>
+          <div><span>岗位成员</span><strong data-invitation-member></strong></div>
+          <div><span>登录账号</span><strong data-invitation-account></strong></div>
+          <div><span>访问角色</span><strong data-invitation-role></strong></div>
+        </section>
+        <form id="login-form" novalidate>
+          <label data-credential-field>登录账号<input name="username" type="text" autocomplete="username" spellcheck="false" autocapitalize="none" required placeholder="例如：ec-a1b2c3-d4e5"></label>
+          <label data-credential-field>密码<input name="password" type="password" autocomplete="current-password" required minlength="10" placeholder="至少 10 个字符…"></label>
+          <button type="submit" class="login-submit" disabled><span>登录并进入</span><span aria-hidden="true">→</span></button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+        <section class="demo-accounts" data-demo-accounts hidden>
+          <div class="section-label"><b>本地验收快捷入口</b><span>仅限本机合成环境，无需填写密码</span></div>
+          <div class="account-grid">
+            <button type="button" data-demo-account="fde"><b>FDE 顾问</b><span>一键进入诊断、决策与报告</span></button>
+            <button type="button" data-demo-account="enterprise"><b>本地合成企业 · 企业授权方</b><span>一键进入；仅当绑定项目仍有效</span></button>
+            <button type="button" data-demo-account="admin"><b>平台管理员</b><span>一键进入成员、配置与审计</span></button>
+          </div>
+        </section>
+      </div>
+      <div class="company-lockup login-maker">
+        <div class="company-identity" aria-label="Absolute Realm Technologies｜绝对领域">
+          <span class="company-english"><span>ABSOLUTE</span><span>REALM</span></span>
+          <span class="company-subline"><span class="company-technology">TECHNOLOGIES</span><span class="company-divider" aria-hidden="true">｜</span><strong class="company-chinese">绝对领域</strong></span>
+          <span class="company-accent" aria-hidden="true"></span>
+        </div>
+        <span class="company-symbol"><img src="absolute-realm-logo.png" width="1200" height="1200" alt="绝对领域标识"></span>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="login.js?v=20260906-3"></script>
+</body>
+</html>

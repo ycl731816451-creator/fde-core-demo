@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>径流·FDE CORE</title>
+  <link rel="icon" href="fde-core-favicon.svg" type="image/svg+xml">
+  <script src="file-redirect.js?v=20260904-1"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stage-workbench.css?v=20260920-choice-modal-compact-1">
+  <link rel="stylesheet" href="hierarchy-refactor.css?v=20260919-enterprise-nav-1">
+  <link rel="stylesheet" href="readiness.css">
+  <link rel="stylesheet" href="unified-flow.css?v=20260909-enterprise-open">
+    <link rel="stylesheet" href="brand-theme.css?v=20260920-modal-unification-2">
+</head>
+<body>
+  <a class="skip-link" href="#workspace-main">跳到主要内容</a>
+  <header class="workspace-topbar app-topbar">
+    <div class="app-topbar-title"><span class="eyebrow">FDE DELIVERY CONSOLE / 01</span><h1>驻场前的初筛</h1><p id="workspace-topbar-description" class="workspace-topbar-description">先远程确认数据基础，再决定是否投入现场顾问。</p></div>
+    <div class="topbar-actions"><span class="connection-pill"><span class="status-dot"></span>本地后端</span><button id="role-switch" type="button" aria-expanded="false" aria-controls="role-menu" hidden>FDE 工作台⌄</button><span id="enterprise-entry-label" class="enterprise-entry-label" hidden>苏州启衡智能制造 · 协作入口</span><div id="role-menu" class="role-menu" hidden><button type="button" data-role="fde_owner">FDE 工作台</button><button type="button" data-role="enterprise_authorizer">企业轻量入口</button><button type="button" data-role="enterprise_process_owner">企业流程负责人入口</button></div><span id="account-summary" class="account-summary" aria-live="polite">正在验证身份…</span><button class="quiet-button account-support" type="button">帮助</button><button id="logout-button" class="quiet-button account-logout" type="button">退出</button><button id="context-rail-toggle" class="context-rail-toggle" type="button" aria-expanded="true" aria-controls="context-content" aria-label="收起当前项目摘要" title="收起当前项目摘要"><svg class="context-rail-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="3"></rect><path d="M15.5 5.5v13"></path></svg></button></div>
+  </header>
+  <div class="app-shell">
+    <aside class="app-sidebar" aria-label="FDE Core 工作台导航">
+      <div class="brand-lockup product-sidebar-lockup" aria-label="FDE CORE - 径流，远程优先的交付工作台">
+        <img src="fde-core-logo-transparent.png" width="1620" height="277" alt="FDE CORE - 径流，远程优先的交付工作台">
+      </div>
+      <div class="workspace-badge" data-fde><span class="status-dot"></span><span>驻场前远程初筛</span></div>
+      <div class="workspace-badge" data-enterprise hidden><span class="status-dot"></span><span>企业协作入口</span></div>
+      <div class="sidebar-label" data-fde>业务工作区</div>
+      <nav class="sidebar-nav" aria-label="工作台模块">
+        <button type="button" class="active" data-view="queue" data-fde aria-current="page"><span class="nav-index">01</span><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="12" height="12" rx="2"></rect><path d="M8 8h12v12H8z"></path></svg></span><span>企业项目台</span><em id="queue-count">3</em></button>
+        <button type="button" data-view="project" data-fde aria-controls="diagnostic-subnav-list" aria-expanded="true"><span class="nav-index">02</span><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"></circle><path d="m15 15 5 5M7.5 10.5h6M10.5 7.5v6"></path></svg></span><span>诊断工作台</span></button>
+        <nav id="diagnostic-subnav-list" class="sidebar-subnav-list" data-fde hidden aria-label="诊断工作台子导航"></nav>
+        <button type="button" data-view="prep" data-fde><span class="nav-index">03</span><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6h9m-9 6h14m-14 6h9"></path><path d="m14 3 3 3-3 3m0 6 3 3-3 3"></path></svg></span><span>介入与验证</span></button>
+        <div class="sidebar-nav-divider" data-fde aria-hidden="true"></div>
+        <div class="sidebar-nav-group-label" data-fde>资源与管理</div>
+        <button type="button" class="sidebar-nav-secondary" data-view="reports" data-fde><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h4M10 13h5m-5 4h5"></path></svg></span><span>报告与交付</span></button>
+        <button type="button" class="sidebar-nav-secondary" data-view="settings" data-fde><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 17h14"></path><circle cx="9" cy="7" r="2"></circle><circle cx="15" cy="17" r="2"></circle></svg></span><span>管理中心</span></button>
+        <div class="sidebar-nav-divider" data-enterprise hidden aria-hidden="true"></div>
+        <div class="sidebar-nav-group-label" data-enterprise hidden>企业协作</div>
+        <button type="button" data-view="enterprise" data-enterprise aria-controls="enterprise-subnav-list" aria-expanded="true" hidden><span class="nav-index">01</span><span>企业操作</span></button>
+        <nav id="enterprise-subnav-list" class="sidebar-subnav-list enterprise-sidebar-subnav" data-enterprise hidden aria-label="企业协作步骤导航"></nav>
+      </nav>
+      <div class="sidebar-footer"><span>合成验证环境</span><small>只用于演示，不代表真实企业结论</small></div>
+    </aside>
+
+    <main id="workspace-main" class="workspace-main" tabindex="-1">
+      <section id="status" class="notice" aria-live="polite">正在读取初筛项目…</section>
+
+      <div id="fde-view" class="workspace-view">
+        <section id="queue" data-view-panel="queue" aria-label="驻场前的初筛">
+          <div class="metric-strip" id="metric-strip"></div>
+          <div class="queue-toolbar"><div class="filter-tabs" role="tablist" aria-label="筛选当前路径"><button id="filter-all" class="active" data-filter="all" role="tab" aria-selected="true" aria-controls="screening-list">全部 <span>3</span></button><button id="filter-recommended" data-filter="recommended" role="tab" aria-selected="false" aria-controls="screening-list">具备远程诊断基础 <span>1</span></button><button id="filter-conditional" data-filter="conditional" role="tab" aria-selected="false" aria-controls="screening-list">远程补充 <span>1</span></button><button id="filter-not-recommended" data-filter="not_recommended" role="tab" aria-selected="false" aria-controls="screening-list">暂缺可验证数据 <span>1</span></button><button id="filter-archived" data-filter="archived" role="tab" aria-selected="false" aria-controls="screening-list">已归档 <span>0</span></button></div><button class="quiet-button" type="button" data-action="new-screening">＋ 新建企业筛选</button></div>
+          <div id="screening-list" class="screening-list" aria-live="polite"></div>
+        </section>
+
+        <section id="project" data-view-panel="project" hidden aria-label="诊断项目">
+          <div id="project-content"></div>
+        </section>
+
+        <section id="prep" data-view-panel="prep" hidden aria-label="介入与验证">
+          <div id="prep-content"></div>
+        </section>
+
+        <section id="reports" data-view-panel="reports" hidden aria-label="跨项目交付资产">
+          <div id="reports-content"></div>
+        </section>
+
+        <section id="settings" data-view-panel="settings" hidden aria-label="系统治理">
+          <div id="settings-content"></div>
+        </section>
+      </div>
+
+      <section id="enterprise" data-view-panel="enterprise" hidden aria-labelledby="enterprise-title">
+        <div class="section-heading"><div><span class="eyebrow">企业协作 / 驻场前初筛</span><h2 id="enterprise-title">驻场前初筛协作</h2></div><p>按步骤提交最小必要材料，帮助服务方在驻场前完成远程初筛。</p></div>
+        <div class="enterprise-card"><div class="enterprise-card-head"><span class="status-dot"></span><div><strong>苏州启衡智能制造</strong><small>驻场前远程初筛 · 等待补充材料</small></div><span id="enterprise-role-badge" class="status-badge good">企业授权人</span></div><div id="enterprise-checklist" class="enterprise-checklist"></div><div id="enterprise-actions" class="enterprise-actions"></div><div id="enterprise-detail" class="detail-panel" tabindex="-1"><p class="muted">请选择一项操作。</p></div></div>
+      </section>
+    </main>
+
+    <aside id="context-rail" class="context-rail" aria-label="当前项目摘要"><div id="context-rail-resizer" class="context-rail-resizer" role="separator" aria-orientation="vertical" aria-label="调整当前项目摘要宽度" aria-valuemin="264" aria-valuemax="360" aria-valuenow="320" tabindex="0"></div><div class="rail-heading"><span class="eyebrow">当前项目</span><span class="rail-pin">LIVE</span></div><div class="context-rail-body"><div id="context-content"><p class="muted">选择企业后显示判断摘要。</p></div><div class="rail-divider"></div><div class="rail-heading"><span class="eyebrow">决策原则</span></div><p class="rail-note">先看数据是否能被读取和追溯，再讨论自动化、Copilot 或 Agent。</p></div></aside>
+  </div>
+    <script src="demo-bootstrap.js?v=20260922-original-ui-1"></script>
+    <script src="security-bootstrap.js?v=20260922-original-ui-1"></script>
+    <script type="module" src="app.js?v=20260920-gsap-motion-1"></script>
+  <script type="module" src="auth-ui.js?v=20260906-2"></script>
+  <script type="module" src="support-ui.js?v=20260906-1"></script>
+  <script type="module" src="draft-protection.js?v=20260906-1"></script>
+  <script type="module" src="evidence-upload-fix.js?v=20260920-modal-unification-1"></script>
+</body>
+</html>

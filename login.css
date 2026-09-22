@@ -1,0 +1,1039 @@
+:root {
+  color: #15231f;
+  background: #eef3f0;
+  font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-synthesis: none;
+  --ink: #15231f;
+  --muted: #697b75;
+  --line: #d7e1dd;
+  --green: #16805a;
+  --mint: #7ed8ae;
+  --night: #101e20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.login-shell {
+  display: grid;
+  grid-template-columns: minmax(560px, 1.08fr) minmax(460px, 0.92fr);
+  width: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: #eef3f0;
+}
+
+.brand-panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(34px, 4.2vw, 68px);
+  color: #eff8f4;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(42, 111, 91, 0.72), transparent 36%),
+    linear-gradient(145deg, #153b34 0%, #101f21 54%, #0d191d 100%);
+}
+
+.brand-panel::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.2;
+  background: radial-gradient(circle at 24% 22%, rgba(126, 216, 174, 0.18), transparent 34%);
+  content: "";
+}
+
+.brand-panel::after {
+  position: absolute;
+  z-index: -1;
+  right: -24%;
+  bottom: -32%;
+  width: min(72vw, 820px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(126, 216, 174, 0.24);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 64px rgba(126, 216, 174, 0.035),
+    0 0 0 128px rgba(126, 216, 174, 0.018);
+  content: "";
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+}
+
+.brand-mark {
+  display: block;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  border: 2px solid #f3faf7;
+  border-radius: 18px;
+  color: #f3faf7;
+}
+
+.brand-mark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.8;
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  line-height: 1;
+}
+
+.brand-wordmark .brand-name {
+  position: relative;
+  isolation: isolate;
+  color: transparent;
+  font-family: "SF Mono", Menlo, Monaco, "Noto Sans Mono", monospace;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 0.86;
+  white-space: nowrap;
+  -webkit-font-smoothing: none;
+}
+
+.brand-wordmark .brand-name-face {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  color: #f3faf7;
+  font: inherit;
+  letter-spacing: inherit;
+  -webkit-text-stroke: 0.55px #f3faf7;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 8px, transparent 8px 10px, #000 10px 18px, transparent 18px 20px, #000 20px 28px, transparent 28px 30px, #000 30px 100%);
+  mask-image: linear-gradient(to bottom, #000 0 8px, transparent 8px 10px, #000 10px 18px, transparent 18px 20px, #000 20px 28px, transparent 28px 30px, #000 30px 100%);
+}
+
+.brand-wordmark .brand-name-face::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  color: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  -webkit-text-stroke: 2px var(--mint);
+  transform: translate(5px, 5px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 8px, transparent 8px 10px, #000 10px 18px, transparent 18px 20px, #000 20px 28px, transparent 28px 30px, #000 30px 100%);
+  mask-image: linear-gradient(to bottom, #000 0 8px, transparent 8px 10px, #000 10px 18px, transparent 18px 20px, #000 20px 28px, transparent 28px 30px, #000 30px 100%);
+  content: attr(data-text);
+  pointer-events: none;
+}
+
+.brand-wordmark small {
+  color: var(--mint);
+  font-family: "SF Mono", Menlo, Monaco, "Noto Sans Mono", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 #0b4637;
+}
+
+.brand-copy {
+  width: min(660px, 92%);
+  margin: clamp(52px, 9vh, 112px) 0 clamp(46px, 8vh, 92px);
+}
+
+.brand-copy > span,
+.eyebrow {
+  color: var(--mint);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.brand-copy h1 {
+  max-width: 660px;
+  margin: 20px 0 22px;
+  color: #f4faf7;
+  font-size: clamp(48px, 5.1vw, 76px);
+  font-weight: 720;
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+}
+
+.brand-copy > p {
+  max-width: 580px;
+  margin: 0;
+  color: #a9c0b9;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.diagnosis-path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 610px;
+  margin: clamp(32px, 5vh, 54px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diagnosis-path li {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 16px 20px 15px 0;
+  border-top: 1px solid rgba(126, 216, 174, 0.28);
+}
+
+.diagnosis-path li:not(:last-child)::after {
+  position: absolute;
+  top: -3px;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+  content: "";
+}
+
+.diagnosis-path span {
+  color: var(--mint);
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.diagnosis-path b {
+  color: #edf7f3;
+  font-size: 14px;
+}
+
+.diagnosis-path small {
+  overflow: hidden;
+  color: #819b94;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boundary-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(142, 203, 180, 0.2);
+  background: rgba(5, 16, 18, 0.34);
+}
+
+.boundary-status {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 5px rgba(126, 216, 174, 0.1);
+}
+
+.boundary-note b,
+.boundary-note div > span {
+  display: block;
+}
+
+.boundary-note b {
+  color: #dcebe5;
+  font-size: 12px;
+}
+
+.boundary-note div > span {
+  margin-top: 4px;
+  color: #809a93;
+  font-size: 11px;
+}
+
+.login-panel {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 100dvh;
+  place-items: center;
+  padding: clamp(32px, 6vw, 96px);
+  background: #eef3f0;
+}
+
+.login-panel::before {
+  position: absolute;
+  top: 34px;
+  right: 40px;
+  color: #8d9d98;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  content: "AUTH / LOCAL";
+}
+
+.login-card {
+  width: 100%;
+  max-width: 500px;
+  min-width: 0;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid #cedad5;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 30px 80px rgba(22, 51, 44, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.88) inset;
+}
+
+.login-context {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 42px;
+  color: #7a8c86;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.context-index {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid #c8d7d1;
+  border-radius: 50%;
+  color: var(--green);
+  font-family: "SF Mono", Menlo, monospace;
+}
+
+.context-line {
+  height: 1px;
+  flex: 1;
+  background: #dce5e1;
+}
+
+.login-heading {
+  margin-bottom: 30px;
+}
+
+.login-heading h2 {
+  margin: 11px 0 9px;
+  color: var(--ink);
+  font-size: 34px;
+  font-weight: 720;
+  letter-spacing: -0.045em;
+}
+
+.login-heading p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+form {
+  display: grid;
+  gap: 17px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #354a44;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #c9d7d2;
+  border-radius: 10px;
+  padding: 0 14px;
+  color: var(--ink);
+  background: #fbfdfc;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+input:hover {
+  border-color: #aebfb8;
+  background: #fff;
+}
+
+input:focus-visible {
+  border-color: var(--green);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(22, 128, 90, 0.13);
+}
+
+.login-submit {
+  display: flex;
+  height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  border: 1px solid #106d4d;
+  border-radius: 10px;
+  padding: 0 17px;
+  color: #fff;
+  background: #147c57;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.login-submit:hover {
+  background: #0f6a4a;
+  box-shadow: 0 9px 22px rgba(20, 124, 87, 0.17);
+  transform: translateY(-1px);
+}
+
+.login-submit:focus-visible,
+.account-grid button:focus-visible {
+  outline: 3px solid rgba(22, 128, 90, 0.22);
+  outline-offset: 2px;
+}
+
+.login-submit:disabled {
+  cursor: wait;
+  opacity: 0.62;
+  transform: none;
+}
+
+.form-status {
+  min-height: 21px;
+  margin: -3px 0 0;
+  color: #647a73;
+  font-size: 13px;
+}
+
+.form-status.error {
+  color: #a93640;
+}
+
+.form-status.success {
+  color: var(--green);
+}
+
+.demo-accounts {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid #e0e7e4;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 11px;
+  color: #324740;
+  font-size: 12px;
+}
+
+.section-label span {
+  color: #83918d;
+  font-size: 11px;
+}
+
+.account-grid {
+  display: grid;
+  gap: 7px;
+}
+
+.account-grid button {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(104px, 0.65fr) 1fr;
+  min-height: 52px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #dbe4e0;
+  border-radius: 9px;
+  padding: 10px 36px 10px 13px;
+  color: var(--ink);
+  text-align: left;
+  background: #f8faf9;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.account-grid button::after {
+  position: absolute;
+  right: 14px;
+  color: #789087;
+  content: "→";
+}
+
+.account-grid button:hover {
+  border-color: #91c3ad;
+  background: #f0f7f3;
+}
+
+.account-grid b,
+.account-grid span {
+  display: block;
+}
+
+.account-grid b {
+  font-size: 12px;
+}
+
+.account-grid span {
+  color: #71817c;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 1120px) {
+  .login-shell {
+    grid-template-columns: minmax(480px, 0.95fr) minmax(420px, 1.05fr);
+  }
+
+  .brand-copy h1 {
+    font-size: clamp(44px, 5.8vw, 62px);
+  }
+
+  .diagnosis-path {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnosis-path li {
+    grid-template-columns: 34px 1fr;
+    gap: 2px 10px;
+    padding: 10px 0;
+  }
+
+  .diagnosis-path li::after {
+    display: none;
+  }
+
+  .diagnosis-path small {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 880px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-panel {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .brand-panel::after {
+    right: -30%;
+    bottom: -80%;
+    width: 86vw;
+  }
+
+  .brand-mark {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+  }
+
+  .brand-wordmark .brand-name {
+    font-size: 34px;
+  }
+
+  .brand-wordmark small {
+    font-size: 10px;
+  }
+
+  .brand-copy {
+    width: 100%;
+    margin: 54px 0 44px;
+  }
+
+  .brand-copy h1 {
+    font-size: clamp(38px, 8vw, 52px);
+  }
+
+  .brand-copy > p {
+    max-width: 640px;
+  }
+
+  .diagnosis-path {
+    display: none;
+  }
+
+  .login-panel {
+    width: 100%;
+    min-height: auto;
+    padding: 30px 24px 44px;
+  }
+
+  .login-panel::before {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-panel {
+    padding: 22px 20px 24px;
+  }
+
+  .brand-lockup {
+    gap: 11px;
+  }
+
+  .brand-mark {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+  }
+
+  .brand-wordmark .brand-name {
+    font-size: 30px;
+  }
+
+  .brand-copy {
+    margin: 42px 0 30px;
+  }
+
+  .brand-copy h1 {
+    margin: 14px 0 17px;
+    font-size: 36px;
+  }
+
+  .brand-copy > p {
+    font-size: 14px;
+  }
+
+  .boundary-note {
+    width: 100%;
+  }
+
+  .login-panel {
+    padding: 18px 14px 28px;
+  }
+
+  .login-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .login-context {
+    margin-bottom: 30px;
+  }
+
+  .login-heading h2 {
+    font-size: 29px;
+  }
+
+  .section-label {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .account-grid button {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.invitation-identity{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-8px 0 24px;padding:14px;border:1px solid #cfe0d8;border-radius:14px;background:#f5faf7}.invitation-identity[hidden]{display:none}.invitation-identity div{min-width:0;padding:10px;border-radius:10px;background:#fff}.invitation-identity span,.invitation-identity strong{display:block}.invitation-identity span{color:var(--muted);font-size:11px}.invitation-identity strong{margin-top:3px;overflow-wrap:anywhere;color:var(--ink);font-size:13px}@media(max-width:480px){.invitation-identity{grid-template-columns:1fr}}
+
+/* Absolute Realm is the maker; Runoff remains the product being entered. */
+:root {
+  --ink: #192236;
+  --muted: #627088;
+  --line: #dbe3ef;
+  --green: #295fe8;
+  --mint: #82aaff;
+  --night: #101522;
+  background: #f3f6fb;
+}
+
+.login-shell { grid-template-columns: minmax(500px, 0.95fr) minmax(440px, 1.05fr); background: #f3f6fb; }
+.brand-panel {
+  background: #101522;
+  padding: clamp(32px, 4vw, 64px);
+}
+.brand-panel::before {
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(126, 166, 255, .055) 1px, transparent 1px) 0 0 / 72px 72px;
+  mask-image: linear-gradient(90deg, #000, transparent 85%);
+}
+.brand-panel::after {
+  right: -24%; bottom: 4%; width: min(64vw, 680px);
+  border-color: rgba(94, 143, 255, .28);
+  border-radius: 50%;
+  transform: rotate(-23deg) scaleY(.38);
+  box-shadow: 0 0 0 32px rgba(47, 101, 246, .03), 0 0 0 96px rgba(47, 101, 246, .018);
+}
+.company-lockup { display: flex; align-items: center; gap: 9px; width: fit-content; max-width: 100%; opacity: .86; }
+.company-symbol { position: relative; display: block; flex: none; width: 62px; height: 43px; overflow: hidden; }
+.company-symbol img { position: absolute; top: -17px; left: -9px; display: block; width: 81px; height: 81px; max-width: none; mix-blend-mode: lighten; }
+.company-identity { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.company-english { display: flex; flex-direction: column; align-items: flex-start; color: #d8e2f5; font: 800 13px/.94 "Arial Black", "Avenir Next", "Helvetica Neue", sans-serif; letter-spacing: .02em; white-space: nowrap; }
+.company-english span + span { margin-top: 3px; }
+.company-subline { display: flex; align-items: center; gap: 5px; margin-top: 5px; white-space: nowrap; }
+.company-technology { color: #90a5cb; font: 500 7px/1.2 "Avenir Next", "Helvetica Neue", sans-serif; letter-spacing: .12em; }
+.company-divider { color: #6e9bff; font-size: 9px; font-weight: 300; line-height: 1; }
+.company-chinese { color: #b9c8e4; font-size: 8px; font-weight: 600; letter-spacing: .04em; }
+.company-accent { display: none; }
+.brand-copy { width: min(650px, 100%); }
+.brand-copy .brand-lockup { gap: 18px; margin-bottom: 27px; }
+.brand-copy .brand-mark { width: 60px; height: 60px; border: 1px solid #779cf4; border-radius: 14px; color: #94b4ff; }
+.brand-wordmark { gap: 5px; }
+.brand-wordmark .brand-name {
+  color: #f7f9ff; font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 42px; font-weight: 700; letter-spacing: .08em; line-height: 1.1;
+  -webkit-font-smoothing: antialiased;
+}
+.brand-wordmark small { color: #94a9d2; font-size: 10px; font-weight: 500; letter-spacing: .08em; text-shadow: none; }
+.brand-copy > span { color: #8db2ff; }
+.brand-copy h1 { max-width: 610px; font-size: clamp(43px, 4.4vw, 68px); letter-spacing: -.055em; }
+.brand-copy > p { color: #b5bfd1; }
+.diagnosis-path li { border-color: rgba(129, 170, 255, .26); }
+.diagnosis-path li:not(:last-child)::after { background: #6b9aff; }
+.diagnosis-path span { color: #8db2ff; }
+.diagnosis-path small { color: #a2aec4; }
+.boundary-note { border-color: #35405a; background: rgba(9, 15, 29, .68); }
+.boundary-status { background: #78abff; box-shadow: 0 0 0 5px rgba(100, 151, 255, .13); }
+.boundary-note b { color: #e2e9f7; }
+.boundary-note div > span { color: #b2bed4; }
+.login-panel { background: #f3f6fb; }
+.login-panel::before { color: #8793a9; }
+.login-card { border-color: #dce4f0; border-radius: 18px; box-shadow: 0 22px 70px rgba(25, 38, 74, .09); }
+.context-index { border-color: #c8d5ed; color: #2c60e5; }
+.context-line { background: #dce4f0; }
+.eyebrow { color: #3869e3; }
+label { color: #253149; }
+input { border-color: #cbd6e7; color: #192236; background: #fbfcff; }
+input:focus-visible { border-color: #3268f0; box-shadow: 0 0 0 3px rgba(50, 104, 240, .16); }
+.login-submit { border-color: #2859d9; background: #295fe8; }
+.login-submit:hover { background: #214fcc; box-shadow: 0 9px 22px rgba(41, 95, 232, .18); }
+.login-submit, .account-grid button { transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, scale .12s ease; }
+.login-submit:not(:disabled):active, .account-grid button:not(:disabled):active { scale: .96; }
+.login-submit:focus-visible, .account-grid button:focus-visible { outline-color: rgba(41, 95, 232, .35); }
+.account-grid button { border-color: #dce4f0; background: #fbfcff; }
+.account-grid button:hover { border-color: #98b2f3; background: #f1f5ff; }
+.invitation-identity { border-color: #d3dff4; background: #f4f7ff; }
+
+@media (max-width: 880px) {
+  .login-shell { grid-template-columns: 1fr; }
+  .brand-panel { min-height: auto; }
+  .brand-copy { margin: 44px 0 34px; }
+  .brand-copy h1 { font-size: clamp(35px, 6vw, 48px); }
+}
+
+@media (max-width: 520px) {
+  .brand-panel { padding: 18px 20px 22px; }
+  .company-lockup { gap: 6px; }
+  .company-symbol { width: 50px; height: 35px; }
+  .company-symbol img { top: -14px; left: -7px; width: 66px; height: 66px; }
+  .company-english { font-size: 11px; }
+  .company-english span + span { margin-top: 2px; }
+  .company-subline { gap: 3px; margin-top: 4px; }
+  .company-technology { font-size: 6px; }
+  .company-divider { font-size: 8px; }
+  .company-chinese { font-size: 7px; }
+  .brand-copy { margin: 24px 0 0; }
+  .brand-copy .brand-lockup { margin-bottom: 12px; }
+  .brand-copy .brand-mark { width: 46px; height: 46px; }
+  .brand-wordmark .brand-name { font-size: 30px; }
+  .brand-wordmark small { font-size: 9px; }
+  .brand-copy > span, .brand-copy h1, .brand-copy > p, .diagnosis-path, .boundary-note { display: none; }
+  .login-panel { padding-top: 18px; }
+}
+
+/* Product hierarchy revision: Absolute Realm endorses; FDE Core leads the entry. */
+.brand-panel { padding: clamp(30px, 3.6vw, 58px); }
+.company-lockup { gap: 8px; opacity: 1; }
+.company-symbol { width: 48px; height: 34px; }
+.company-symbol img { top: -13px; left: -7px; width: 64px; height: 64px; mix-blend-mode: normal; }
+.company-english { font-size: 10px; letter-spacing: .035em; }
+.company-english span + span { margin-top: 2px; }
+.company-subline { margin-top: 4px; }
+.brand-copy { width: min(610px, 100%); }
+.brand-copy .brand-lockup { align-items: center; gap: 15px; margin-bottom: 24px; }
+.brand-copy .brand-mark {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #8fb2ff;
+}
+.brand-copy .brand-mark path { stroke-width: 2.5; }
+.brand-wordmark { gap: 8px; }
+.brand-core {
+  display: inline-block;
+  color: #f7f9ff;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", "Avenir Next Condensed", sans-serif;
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: .095em;
+  line-height: .9;
+  transform: skewX(-2deg);
+}
+.brand-description { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.brand-wordmark .brand-name {
+  color: #a7bce9;
+  font-size: 12px;
+  font-weight: 620;
+  letter-spacing: .12em;
+  line-height: 1;
+}
+.brand-separator { width: 1px; height: 13px; background: #536889; }
+.brand-wordmark small {
+  color: #91a4c9;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+.brand-copy > span { color: #95b8ff; font-size: 11px; letter-spacing: .14em; }
+.brand-copy h1 { font-size: clamp(41px, 4vw, 62px); max-width: 580px; }
+.diagnosis-path { max-width: 570px; }
+
+/* Supplied FDE Core asset is the product's primary mark. The screen blend
+   removes the artwork's dark matte while retaining its blue and silver ink. */
+.brand-copy .product-lockup {
+  display: block;
+  width: min(100%, 470px);
+  margin-bottom: 28px;
+}
+.product-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Login-page hierarchy: maker endorsement at the top, product story at center. */
+.brand-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-content: stretch;
+}
+.brand-copy {
+  align-self: center;
+  width: min(570px, 100%);
+  margin: clamp(32px, 3vh, 56px) 0;
+}
+.brand-copy .product-lockup {
+  width: min(100%, 390px);
+  margin: 0 0 clamp(28px, 3.2vh, 40px);
+}
+.brand-copy > span {
+  display: block;
+  margin-bottom: 12px;
+}
+.brand-copy h1 {
+  max-width: 560px;
+  margin: 0 0 18px;
+  font-size: clamp(42px, 3.7vw, 60px);
+  line-height: 1.06;
+}
+.brand-copy > p { max-width: 540px; }
+.diagnosis-path { max-width: 540px; margin-top: clamp(30px, 4vh, 44px); }
+@media (max-width: 880px) {
+  .brand-copy { align-self: auto; margin: 40px 0 32px; }
+}
+@media (max-width: 520px) {
+  .brand-copy .product-lockup { width: min(100%, 300px); margin-bottom: 0; }
+}
+
+/* Entry actions share the workbench's blue action hierarchy. */
+.login-submit,
+.account-grid button {
+  min-height: 44px;
+  border-radius: 11px;
+  font-weight: 680;
+  letter-spacing: .01em;
+}
+.login-submit {
+  border-color: #285fe0;
+  background: #285fe0;
+  box-shadow: 0 1px 2px rgba(22, 53, 125, .22), 0 8px 18px rgba(41, 95, 232, .17);
+}
+.login-submit:hover:not(:disabled) {
+  border-color: #1f4fc7;
+  background: #1f4fc7;
+  box-shadow: 0 2px 3px rgba(22, 53, 125, .24), 0 10px 20px rgba(41, 95, 232, .2);
+  translate: 0 -1px;
+}
+.account-grid button {
+  border-color: #c5d3ea;
+  background: #f8faff;
+  color: #234fba;
+  box-shadow: 0 1px 1px rgba(26, 51, 103, .03);
+}
+.account-grid button:hover:not(:disabled) {
+  border-color: #91afe8;
+  background: #edf3ff;
+  color: #1d48b0;
+  box-shadow: 0 5px 14px rgba(38, 80, 171, .09);
+}
+.login-submit:not(:disabled):active,
+.account-grid button:not(:disabled):active { scale: .96; translate: 0; }
+.login-submit:disabled,
+.account-grid button:disabled { box-shadow: none; cursor: not-allowed; opacity: .5; }
+@media (prefers-reduced-motion: reduce) {
+  .login-submit, .account-grid button { transition: none; }
+}
+@media (max-width: 520px) {
+  .company-symbol { width: 42px; height: 30px; }
+  .company-symbol img { top: -12px; left: -6px; width: 57px; height: 57px; }
+  .brand-copy .product-lockup { width: min(100%, 330px); margin-bottom: 14px; }
+}
+
+/* Entry header: the product mark anchors the top-left. The maker mark now lives in
+   the bottom-right credit, so the strip stays one uninterrupted band (no divider). */
+.login-shell {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+/* The header band only covers the dark column; the access column runs to the top
+   edge, so nothing sits above the card. */
+.login-topbar {
+  display: flex;
+  grid-column: 1;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(10px, 1.3vh, 20px) clamp(30px, 3.6vw, 58px);
+  background: #101522;
+}
+.login-topbar .product-lockup {
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+.login-topbar .product-logo {
+  display: block;
+  width: auto;
+  height: clamp(26px, 3.9vh, 46px);
+}
+
+/* Maker credit: the supplied artwork is near-white ink (#f8f8fb) plus the brand blue
+   (#2667fa). The light access column keeps the blue and flips only the ink to dark. */
+.company-lockup.login-maker {
+  grid-row: 2;
+  justify-self: center;
+  justify-content: flex-end;
+  width: min(100%, 500px);
+  margin-top: clamp(8px, 1.1vh, 20px);
+  align-items: flex-end;
+  gap: 9px;
+}
+.login-maker .company-identity { align-items: flex-end; }
+.login-maker .company-subline { justify-content: flex-end; }
+/* Both wordmark lines share one right edge, flush with the mark beside them. */
+.login-maker .company-english { color: #22304a; align-items: flex-end; }
+.login-maker .company-technology { color: #7d8ba4; }
+.login-maker .company-divider { color: #a8b8d2; }
+.login-maker .company-chinese { color: #46587b; }
+.login-maker .company-symbol img { filter: invert(1) hue-rotate(180deg); }
+
+/* The entry screen sizes itself to the window: no page scroll at desktop heights.
+   Touch targets keep their 44px floor; everything else scales with viewport height. */
+.brand-panel,
+.login-panel {
+  min-height: 0;
+  height: 100%;
+}
+.brand-panel {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.login-panel {
+  grid-row: 1 / -1;
+  grid-column: 2;
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding: clamp(12px, 2.3vh, 72px) clamp(32px, 6vw, 96px);
+}
+.login-card {
+  grid-row: 1;
+  padding: clamp(14px, 2.4vh, 40px) clamp(22px, 3vw, 44px);
+}
+.login-context { margin-bottom: clamp(10px, 1.7vh, 36px); }
+.context-index {
+  width: clamp(24px, 2.6vh, 27px);
+  height: clamp(24px, 2.6vh, 27px);
+}
+.login-heading { margin-bottom: clamp(10px, 1.5vh, 26px); }
+.login-heading h2 { font-size: clamp(22px, 3.4vh, 34px); }
+.login-heading p { font-size: clamp(12.5px, 1.6vh, 14px); }
+#login-form { gap: clamp(8px, 1.3vh, 17px); }
+#login-form input { height: clamp(44px, 5vh, 50px); }
+.login-submit { height: clamp(44px, 5.4vh, 52px); }
+.form-status { min-height: clamp(16px, 1.9vh, 21px); }
+.demo-accounts { margin-top: clamp(9px, 1.5vh, 22px); padding-top: clamp(8px, 1.4vh, 20px); }
+.section-label { margin-bottom: clamp(6px, 1.2vh, 11px); }
+.account-grid { gap: clamp(5px, .8vh, 7px); }
+.account-grid button { min-height: clamp(44px, 5vh, 52px); }
+
+/* Below roughly 760px of window height the card cannot hold every row at the 44px
+   touch floor, so the decorative step indicator drops out before anything real. */
+@media (max-height: 762px) {
+  .login-context { display: none; }
+}
+
+@media (max-width: 880px) {
+  .login-shell { grid-template-rows: auto auto auto; }
+  .brand-panel,
+  .login-panel { height: auto; }
+  .login-topbar { grid-column: 1 / -1; padding: 15px 22px; }
+  .login-topbar .product-logo { height: 30px; }
+  .login-panel { grid-row: 3; grid-column: 1; padding: 26px 22px 30px; }
+}
+
+/* The two desktop columns keep a 940px floor, which would push the maker credit
+   past the viewport edge between 881px and 1120px. Let them shrink instead. */
+@media (min-width: 881px) and (max-width: 1120px) {
+  .login-shell { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .login-topbar { padding: 13px 20px; }
+  .login-topbar .product-logo { height: 26px; }
+  .login-maker { gap: 6px; }
+}
