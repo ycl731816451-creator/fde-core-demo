@@ -1,4 +1,4 @@
-const params=new URLSearchParams(location.search),inviteToken=params.get('invite'),form=document.querySelector('#login-form'),status=document.querySelector('#form-status'),demoSection=document.querySelector('[data-demo-accounts]');
+const params=new URLSearchParams(location.search),inviteToken=params.get('invite'),form=document.querySelector('#login-form'),status=document.querySelector('#form-status'),demoSection=document.querySelector('[data-demo-accounts]'),isStaticDemoHost=location.hostname.endsWith('.github.io');
 
 if(location.protocol==='file:')location.replace('http://127.0.0.1:4174/login.html');
 else if(inviteToken)setupInvitation(inviteToken);
@@ -26,6 +26,11 @@ async function setupInvitation(token){
 }
 
 async function setupDemoMode(){
+ if(isStaticDemoHost){
+  demoSection.hidden=false;
+  demoSection.querySelectorAll('[data-demo-account]').forEach(button=>button.addEventListener('click',()=>enterDemo(button)));
+  return;
+ }
  try{
   const response=await fetch('/api/auth/demo-mode',{headers:{accept:'application/json'}}),payload=await response.json();
   if(!response.ok||!payload.enabled)return;
@@ -36,11 +41,19 @@ async function setupDemoMode(){
 
 async function enterDemo(button){
  const buttons=[...demoSection.querySelectorAll('button')];buttons.forEach(item=>item.disabled=true);status.className='form-status';status.textContent=`正在进入${button.querySelector('b').textContent}…`;
+ if(isStaticDemoHost){location.replace(staticDemoLanding(button.dataset.demoAccount));return;}
  try{
   const response=await fetch('/api/auth/demo-login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({account:button.dataset.demoAccount})}),result=await response.json();
   if(!response.ok)throw new Error(result.message||'本地演示登录不可用');
   status.className='form-status success';status.textContent='身份验证成功，正在进入…';location.replace(safeNext(params.get('next'))||result.landing||'/');
  }catch(error){status.className='form-status error';status.textContent=error.message;buttons.forEach(item=>item.disabled=false);}
+}
+
+function staticDemoLanding(account){
+ const base=location.pathname.replace(/login\.html$/,'');
+ const section=account==='enterprise'?'enterprise':account==='admin'?'settings':'queue';
+ const entry=account==='enterprise'?'&entry=enterprise_authorizer':'';
+ return `${base}?demo=1&enterpriseId=qingshan${entry}#${section}`;
 }
 
 function safeNext(value){if(!value||!value.startsWith('/')||value.startsWith('//')||value.startsWith('/login'))return null;const url=new URL(value,location.origin),allowed=new Set(['projectSection','sourceType','prepSection','reportType','reportSection','settingsSection','enterpriseId']);for(const key of [...url.searchParams.keys()])if(!allowed.has(key))url.searchParams.delete(key);return `${url.pathname}${url.search}${url.hash}`;}
